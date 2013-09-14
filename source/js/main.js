@@ -3,7 +3,7 @@
 $(function(){
 //============
 
-//initializing fancybox
+//initializing fancybox for photos
 $(".fancybox").fancybox({
 		openEffect	: 'elastic',
     	closeEffect	: 'elastic',
@@ -14,6 +14,14 @@ $(".fancybox").fancybox({
     		}
     	}
 });
+//initializing fancybox for videos
+$('.fancybox-media').fancybox({
+		openEffect  : 'none',
+		closeEffect : 'none',
+		helpers : {
+			media : {}
+		}
+	});
 
 $(".addCollection").on("click",function(event) {
 	event.preventDefault();
