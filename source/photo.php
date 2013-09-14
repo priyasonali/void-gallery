@@ -57,7 +57,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-7">
-					<p><strong>Uploaded On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
+					<p><strong>Added On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
 				</div>
 				<div class="col-md-4">
 					<p><strong>Views:<br></strong><em><span class="collectionDate">1260</span></em></p>
@@ -79,7 +79,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-7">
-					<p><strong>Uploaded On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
+					<p><strong>Added On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
 				</div>
 				<div class="col-md-4">
 					<p><strong>Views:<br></strong><em><span class="collectionDate">1260</span></em></p>
@@ -101,7 +101,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-7">
-					<p><strong>Uploaded On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
+					<p><strong>Added On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
 				</div>
 				<div class="col-md-4">
 					<p><strong>Views:<br></strong><em><span class="collectionDate">1260</span></em></p>
@@ -123,7 +123,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-7">
-					<p><strong>Uploaded On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
+					<p><strong>Added On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
 				</div>
 				<div class="col-md-4">
 					<p><strong>Views:<br></strong><em><span class="collectionDate">1260</span></em></p>
@@ -147,7 +147,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-7">
-					<p><strong>Uploaded On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
+					<p><strong>Added On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
 				</div>
 				<div class="col-md-4">
 					<p><strong>Views:<br></strong><em><span class="collectionDate">1260</span></em></p>
@@ -169,7 +169,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-7">
-					<p><strong>Uploaded On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
+					<p><strong>Added On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
 				</div>
 				<div class="col-md-4">
 					<p><strong>Views:<br></strong><em><span class="collectionDate">1260</span></em></p>
@@ -191,7 +191,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-7">
-					<p><strong>Uploaded On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
+					<p><strong>Added On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
 				</div>
 				<div class="col-md-4">
 					<p><strong>Views:<br></strong><em><span class="collectionDate">1260</span></em></p>
@@ -213,7 +213,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-7">
-					<p><strong>Uploaded On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
+					<p><strong>Added On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
 				</div>
 				<div class="col-md-4">
 					<p><strong>Views:<br></strong><em><span class="collectionDate">1260</span></em></p>
@@ -237,7 +237,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-7">
-					<p><strong>Uploaded On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
+					<p><strong>Added On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
 				</div>
 				<div class="col-md-4">
 					<p><strong>Views:<br></strong><em><span class="collectionDate">1260</span></em></p>
@@ -259,7 +259,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-7">
-					<p><strong>Uploaded On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
+					<p><strong>Added On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
 				</div>
 				<div class="col-md-4">
 					<p><strong>Views:<br></strong><em><span class="collectionDate">1260</span></em></p>
@@ -281,7 +281,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-7">
-					<p><strong>Uploaded On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
+					<p><strong>Added On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
 				</div>
 				<div class="col-md-4">
 					<p><strong>Views:<br></strong><em><span class="collectionDate">1260</span></em></p>
@@ -303,7 +303,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-7">
-					<p><strong>Uploaded On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
+					<p><strong>Added On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
 				</div>
 				<div class="col-md-4">
 					<p><strong>Views:<br></strong><em><span class="collectionDate">1260</span></em></p>
