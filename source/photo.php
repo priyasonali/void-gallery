@@ -18,9 +18,9 @@
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" type="text/css" media="screen">
 
 <!--[2] fancybox-->
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-buttons.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-thumbs.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="js/fancybox/helpers/jquery.fancybox-buttons.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="js/fancybox/helpers/jquery.fancybox-thumbs.css" type="text/css" media="screen" />
 
 <!--[3] own style-->
 <link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
@@ -53,7 +53,7 @@
 					<a class="editPhoto" title="Edit Photo" href="#"><span class="glyphicon glyphicon-edit"></span></a>&nbsp&nbsp&nbsp
 					<a class="deletePhoto" title="Delete Photo" href="#"><span class="glyphicon glyphicon-trash"></span></a>
 				</div>
-				<img class="img-thumbnail" src="uploads/photos/thumbs/1.jpg" alt="photo" />
+				<a class="fancybox" rel="group" href="uploads/photos/1.jpg" title="Green and Gold"><img class="img-thumbnail" src="uploads/photos/thumbs/1.jpg" alt="photo" /></a>
 			</div>
 			<div class="row">
 				<div class="col-md-7">
@@ -75,7 +75,7 @@
 					<a class="editPhoto" title="Edit Photo" href="#"><span class="glyphicon glyphicon-edit"></span></a>&nbsp&nbsp&nbsp
 					<a class="deletePhoto" title="Delete Photo" href="#"><span class="glyphicon glyphicon-trash"></span></a>
 				</div>
-				<img class="img-thumbnail" src="uploads/photos/thumbs/2.jpg" alt="photo" />
+				<a class="fancybox" rel="group" href="uploads/photos/2.jpg" title="Green and Gold"><img class="img-thumbnail" src="uploads/photos/thumbs/2.jpg" alt="photo" /></a>
 			</div>
 			<div class="row">
 				<div class="col-md-7">
@@ -97,7 +97,7 @@
 					<a class="editPhoto" title="Edit Photo" href="#"><span class="glyphicon glyphicon-edit"></span></a>&nbsp&nbsp&nbsp
 					<a class="deletePhoto" title="Delete Photo" href="#"><span class="glyphicon glyphicon-trash"></span></a>
 				</div>
-				<img class="img-thumbnail" src="uploads/photos/thumbs/3.jpg" alt="photo" />
+				<a class="fancybox" rel="group" href="uploads/photos/3.jpg" title="Green and Gold"><img class="img-thumbnail" src="uploads/photos/thumbs/3.jpg" alt="photo" /></a>
 			</div>
 			<div class="row">
 				<div class="col-md-7">
@@ -119,97 +119,7 @@
 					<a class="editPhoto" title="Edit Photo" href="#"><span class="glyphicon glyphicon-edit"></span></a>&nbsp&nbsp&nbsp
 					<a class="deletePhoto" title="Delete Photo" href="#"><span class="glyphicon glyphicon-trash"></span></a>
 				</div>
-				<img class="img-thumbnail" src="uploads/photos/thumbs/4.jpg" alt="photo" />
-			</div>
-			<div class="row">
-				<div class="col-md-7">
-					<p><strong>Uploaded On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
-				</div>
-				<div class="col-md-4">
-					<p><strong>Views:<br></strong><em><span class="collectionDate">1260</span></em></p>
-				</div>
-			</div>
-			<p class="photoDesc text-left">
-			Bacon ipsum dolor sit amet cow swine chicken tri-tip t-bone, jowl short loin short ribs bresaola fra...
-			<button class="btn btn-primary btn-xs">More<span class="glyphicon glyphicon-chevron-right pull-right"></span></button>
-			</p>
-		</div>
-	</div>
-	<div class="row">
-		<div class="col-md-3 text-center panel panel-default">
-			<div class="row">
-				<h3 class="photoName">Green and Gold</h3>
-				<div class="row">
-					<a class="editPhoto" title="Edit Photo" href="#"><span class="glyphicon glyphicon-edit"></span></a>&nbsp&nbsp&nbsp
-					<a class="deletePhoto" title="Delete Photo" href="#"><span class="glyphicon glyphicon-trash"></span></a>
-				</div>
-				<img class="img-thumbnail" src="uploads/photos/thumbs/5.jpg" alt="photo" />
-			</div>
-			<div class="row">
-				<div class="col-md-7">
-					<p><strong>Uploaded On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
-				</div>
-				<div class="col-md-4">
-					<p><strong>Views:<br></strong><em><span class="collectionDate">1260</span></em></p>
-				</div>
-			</div>
-			<p class="photoDesc text-left">
-			Bacon ipsum dolor sit amet cow swine chicken tri-tip t-bone, jowl short loin short ribs bresaola fra...
-			<button class="btn btn-primary btn-xs">More<span class="glyphicon glyphicon-chevron-right pull-right"></span></button>
-			</p>
-		</div>
-		<div class="col-md-3 text-center panel panel-default">
-			<div class="row">
-				<h3 class="photoName">Green and Gold</h3>
-				<div class="row">
-					<a class="editPhoto" title="Edit Photo" href="#"><span class="glyphicon glyphicon-edit"></span></a>&nbsp&nbsp&nbsp
-					<a class="deletePhoto" title="Delete Photo" href="#"><span class="glyphicon glyphicon-trash"></span></a>
-				</div>
-				<img class="img-thumbnail" src="uploads/photos/thumbs/6.jpg" alt="photo" />
-			</div>
-			<div class="row">
-				<div class="col-md-7">
-					<p><strong>Uploaded On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
-				</div>
-				<div class="col-md-4">
-					<p><strong>Views:<br></strong><em><span class="collectionDate">1260</span></em></p>
-				</div>
-			</div>
-			<p class="photoDesc text-left">
-			Bacon ipsum dolor sit amet cow swine chicken tri-tip t-bone, jowl short loin short ribs bresaola fra...
-			<button class="btn btn-primary btn-xs">More<span class="glyphicon glyphicon-chevron-right pull-right"></span></button>
-			</p>
-		</div>
-		<div class="col-md-3 text-center panel panel-default">
-			<div class="row">
-				<h3 class="photoName">Green and Gold</h3>
-				<div class="row">
-					<a class="editPhoto" title="Edit Photo" href="#"><span class="glyphicon glyphicon-edit"></span></a>&nbsp&nbsp&nbsp
-					<a class="deletePhoto" title="Delete Photo" href="#"><span class="glyphicon glyphicon-trash"></span></a>
-				</div>
-				<img class="img-thumbnail" src="uploads/photos/thumbs/1.jpg" alt="photo" />
-			</div>
-			<div class="row">
-				<div class="col-md-7">
-					<p><strong>Uploaded On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
-				</div>
-				<div class="col-md-4">
-					<p><strong>Views:<br></strong><em><span class="collectionDate">1260</span></em></p>
-				</div>
-			</div>
-			<p class="photoDesc text-left">
-			Bacon ipsum dolor sit amet cow swine chicken tri-tip t-bone, jowl short loin short ribs bresaola fra...
-			<button class="btn btn-primary btn-xs">More<span class="glyphicon glyphicon-chevron-right pull-right"></span></button>
-			</p>
-		</div>
-		<div class="col-md-3 text-center panel panel-default">
-			<div class="row">
-				<h3 class="photoName">Green and Gold</h3>
-				<div class="row">
-					<a class="editPhoto" title="Edit Photo" href="#"><span class="glyphicon glyphicon-edit"></span></a>&nbsp&nbsp&nbsp
-					<a class="deletePhoto" title="Delete Photo" href="#"><span class="glyphicon glyphicon-trash"></span></a>
-				</div>
-				<img class="img-thumbnail" src="uploads/photos/thumbs/2.jpg" alt="photo" />
+				<a class="fancybox" rel="group" href="uploads/photos/4.jpg" title="Green and Gold"><img class="img-thumbnail" src="uploads/photos/thumbs/4.jpg" alt="photo" /></a>
 			</div>
 			<div class="row">
 				<div class="col-md-7">
@@ -233,7 +143,7 @@
 					<a class="editPhoto" title="Edit Photo" href="#"><span class="glyphicon glyphicon-edit"></span></a>&nbsp&nbsp&nbsp
 					<a class="deletePhoto" title="Delete Photo" href="#"><span class="glyphicon glyphicon-trash"></span></a>
 				</div>
-				<img class="img-thumbnail" src="uploads/photos/thumbs/3.jpg" alt="photo" />
+				<a class="fancybox" rel="group" href="uploads/photos/5.jpg" title="Green and Gold"><img class="img-thumbnail" src="uploads/photos/thumbs/5.jpg" alt="photo" /></a>
 			</div>
 			<div class="row">
 				<div class="col-md-7">
@@ -255,7 +165,7 @@
 					<a class="editPhoto" title="Edit Photo" href="#"><span class="glyphicon glyphicon-edit"></span></a>&nbsp&nbsp&nbsp
 					<a class="deletePhoto" title="Delete Photo" href="#"><span class="glyphicon glyphicon-trash"></span></a>
 				</div>
-				<img class="img-thumbnail" src="uploads/photos/thumbs/4.jpg" alt="photo" />
+				<a class="fancybox" rel="group" href="uploads/photos/6.jpg" title="Green and Gold"><img class="img-thumbnail" src="uploads/photos/thumbs/6.jpg" alt="photo" /></a>
 			</div>
 			<div class="row">
 				<div class="col-md-7">
@@ -277,7 +187,7 @@
 					<a class="editPhoto" title="Edit Photo" href="#"><span class="glyphicon glyphicon-edit"></span></a>&nbsp&nbsp&nbsp
 					<a class="deletePhoto" title="Delete Photo" href="#"><span class="glyphicon glyphicon-trash"></span></a>
 				</div>
-				<img class="img-thumbnail" src="uploads/photos/thumbs/5.jpg" alt="photo" />
+				<a class="fancybox" rel="group" href="uploads/photos/1.jpg" title="Green and Gold"><img class="img-thumbnail" src="uploads/photos/thumbs/1.jpg" alt="photo" /></a>
 			</div>
 			<div class="row">
 				<div class="col-md-7">
@@ -299,7 +209,97 @@
 					<a class="editPhoto" title="Edit Photo" href="#"><span class="glyphicon glyphicon-edit"></span></a>&nbsp&nbsp&nbsp
 					<a class="deletePhoto" title="Delete Photo" href="#"><span class="glyphicon glyphicon-trash"></span></a>
 				</div>
-				<img class="img-thumbnail" src="uploads/photos/thumbs/6.jpg" alt="photo" />
+				<a class="fancybox" rel="group" href="uploads/photos/2.jpg" title="Green and Gold"><img class="img-thumbnail" src="uploads/photos/thumbs/2.jpg" alt="photo" /></a>
+			</div>
+			<div class="row">
+				<div class="col-md-7">
+					<p><strong>Uploaded On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
+				</div>
+				<div class="col-md-4">
+					<p><strong>Views:<br></strong><em><span class="collectionDate">1260</span></em></p>
+				</div>
+			</div>
+			<p class="photoDesc text-left">
+			Bacon ipsum dolor sit amet cow swine chicken tri-tip t-bone, jowl short loin short ribs bresaola fra...
+			<button class="btn btn-primary btn-xs">More<span class="glyphicon glyphicon-chevron-right pull-right"></span></button>
+			</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-3 text-center panel panel-default">
+			<div class="row">
+				<h3 class="photoName">Green and Gold</h3>
+				<div class="row">
+					<a class="editPhoto" title="Edit Photo" href="#"><span class="glyphicon glyphicon-edit"></span></a>&nbsp&nbsp&nbsp
+					<a class="deletePhoto" title="Delete Photo" href="#"><span class="glyphicon glyphicon-trash"></span></a>
+				</div>
+				<a class="fancybox" rel="group" href="uploads/photos/3.jpg" title="Green and Gold"><img class="img-thumbnail" src="uploads/photos/thumbs/3.jpg" alt="photo" /></a>
+			</div>
+			<div class="row">
+				<div class="col-md-7">
+					<p><strong>Uploaded On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
+				</div>
+				<div class="col-md-4">
+					<p><strong>Views:<br></strong><em><span class="collectionDate">1260</span></em></p>
+				</div>
+			</div>
+			<p class="photoDesc text-left">
+			Bacon ipsum dolor sit amet cow swine chicken tri-tip t-bone, jowl short loin short ribs bresaola fra...
+			<button class="btn btn-primary btn-xs">More<span class="glyphicon glyphicon-chevron-right pull-right"></span></button>
+			</p>
+		</div>
+		<div class="col-md-3 text-center panel panel-default">
+			<div class="row">
+				<h3 class="photoName">Green and Gold</h3>
+				<div class="row">
+					<a class="editPhoto" title="Edit Photo" href="#"><span class="glyphicon glyphicon-edit"></span></a>&nbsp&nbsp&nbsp
+					<a class="deletePhoto" title="Delete Photo" href="#"><span class="glyphicon glyphicon-trash"></span></a>
+				</div>
+				<a class="fancybox" rel="group" href="uploads/photos/4.jpg" title="Green and Gold"><img class="img-thumbnail" src="uploads/photos/thumbs/4.jpg" alt="photo" /></a>
+			</div>
+			<div class="row">
+				<div class="col-md-7">
+					<p><strong>Uploaded On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
+				</div>
+				<div class="col-md-4">
+					<p><strong>Views:<br></strong><em><span class="collectionDate">1260</span></em></p>
+				</div>
+			</div>
+			<p class="photoDesc text-left">
+			Bacon ipsum dolor sit amet cow swine chicken tri-tip t-bone, jowl short loin short ribs bresaola fra...
+			<button class="btn btn-primary btn-xs">More<span class="glyphicon glyphicon-chevron-right pull-right"></span></button>
+			</p>
+		</div>
+		<div class="col-md-3 text-center panel panel-default">
+			<div class="row">
+				<h3 class="photoName">Green and Gold</h3>
+				<div class="row">
+					<a class="editPhoto" title="Edit Photo" href="#"><span class="glyphicon glyphicon-edit"></span></a>&nbsp&nbsp&nbsp
+					<a class="deletePhoto" title="Delete Photo" href="#"><span class="glyphicon glyphicon-trash"></span></a>
+				</div>
+				<a class="fancybox" rel="group" href="uploads/photos/5.jpg" title="Green and Gold"><img class="img-thumbnail" src="uploads/photos/thumbs/5.jpg" alt="photo" /></a>
+			</div>
+			<div class="row">
+				<div class="col-md-7">
+					<p><strong>Uploaded On:<br></strong><em><span class="collectionDate">24-12-1989</span></em></p>
+				</div>
+				<div class="col-md-4">
+					<p><strong>Views:<br></strong><em><span class="collectionDate">1260</span></em></p>
+				</div>
+			</div>
+			<p class="photoDesc text-left">
+			Bacon ipsum dolor sit amet cow swine chicken tri-tip t-bone, jowl short loin short ribs bresaola fra...
+			<button class="btn btn-primary btn-xs">More<span class="glyphicon glyphicon-chevron-right pull-right"></span></button>
+			</p>
+		</div>
+		<div class="col-md-3 text-center panel panel-default">
+			<div class="row">
+				<h3 class="photoName">Green and Gold</h3>
+				<div class="row">
+					<a class="editPhoto" title="Edit Photo" href="#"><span class="glyphicon glyphicon-edit"></span></a>&nbsp&nbsp&nbsp
+					<a class="deletePhoto" title="Delete Photo" href="#"><span class="glyphicon glyphicon-trash"></span></a>
+				</div>
+				<a class="fancybox" rel="group" href="uploads/photos/6.jpg" title="Green and Gold"><img class="img-thumbnail" src="uploads/photos/thumbs/6.jpg" alt="photo" /></a>
 			</div>
 			<div class="row">
 				<div class="col-md-7">
@@ -356,11 +356,11 @@
 <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
 <!--[3] fancybox and helpers-->
-<script type="text/javascript" src="/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
-<script type="text/javascript" src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-buttons.js"></script>
-<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-media.js"></script>
-<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-thumbs.js"></script>
+<script type="text/javascript" src="js/fancybox/helpers/jquery.mousewheel-3.0.6.pack.js"></script>
+<script type="text/javascript" src="js/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript" src="js/fancybox/helpers/jquery.fancybox-buttons.js"></script>
+<script type="text/javascript" src="js/fancybox/helpers/jquery.fancybox-media.js"></script>
+<script type="text/javascript" src="/js/fancybox/helpers/jquery.fancybox-thumbs.js"></script>
 
 <!--[4] own script-->
 <script type="text/javascript" src="js/main.js"></script>

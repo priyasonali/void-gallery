@@ -18,9 +18,9 @@
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" type="text/css" media="screen">
 
 <!--[2] fancybox-->
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-buttons.css" type="text/css" media="screen" />
-<link rel="stylesheet" href="/fancybox/source/helpers/jquery.fancybox-thumbs.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="js/fancybox/helpers/jquery.fancybox-buttons.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="js/fancybox/helpers/jquery.fancybox-thumbs.css" type="text/css" media="screen" />
 
 <!--[3] own style-->
 <link rel="stylesheet" href="css/style.css" type="text/css" media="screen">
@@ -346,11 +346,11 @@
 <script type="text/javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 
 <!--[3] fancybox and helpers-->
-<script type="text/javascript" src="/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
-<script type="text/javascript" src="/fancybox/jquery.fancybox.pack.js"></script>
-<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-buttons.js"></script>
-<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-media.js"></script>
-<script type="text/javascript" src="/fancybox/source/helpers/jquery.fancybox-thumbs.js"></script>
+<script type="text/javascript" src="js/fancybox/helpers/jquery.mousewheel-3.0.6.pack.js"></script>
+<script type="text/javascript" src="js/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript" src="js/fancybox/helpers/jquery.fancybox-buttons.js"></script>
+<script type="text/javascript" src="js/fancybox/helpers/jquery.fancybox-media.js"></script>
+<script type="text/javascript" src="/js/fancybox/helpers/jquery.fancybox-thumbs.js"></script>
 
 <!--[4] own script-->
 <script type="text/javascript" src="js/main.js"></script>

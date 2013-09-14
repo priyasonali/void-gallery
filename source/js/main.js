@@ -1,4 +1,19 @@
+//============
+//Begin Script
 $(function(){
+//============
+
+//initializing fancybox
+$(".fancybox").fancybox({
+		openEffect	: 'elastic',
+    	closeEffect	: 'elastic',
+
+    	helpers : {
+    		title : {
+    			type : 'float'
+    		}
+    	}
+});
 
 $(".addCollection").on("click",function(event) {
 	event.preventDefault();
@@ -12,4 +27,6 @@ $(".collectionView .panel").on("mouseover",function() {
 	$(this).removeClass("panel-primary").addClass("panel-default");
 });
 
-});
+//=============
+});//End Script
+//=============
