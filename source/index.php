@@ -7,7 +7,7 @@
 <meta name="author" value="Void Informatics">
 <meta name="copyright" value="Void Informatics">
 <!--title-->
-<title>Simple Photo Gallery</title>
+<title>Void Gallery</title>
 <!--dependencies-->
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 <link rel="stylesheet" href="css/style.css">
@@ -20,7 +20,7 @@
 <header>
 	<nav class="navbar navbar-inverse navbar-static-top">
 		<div class="container">
-		<a class="navbar-brand pull-left" href="#">Simple Photo Gallery</a>
+		<a class="navbar-brand pull-left" href="#">Void Gallery</a>
 		<p class="navbar-text pull-right hidden-xs">By <a href="http://voidinformatics.com" target="_blank">Void Informatics</a></p> 
 		</div>
 	</nav>
