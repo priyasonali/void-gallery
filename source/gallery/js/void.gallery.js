@@ -14,6 +14,7 @@ $(".fancybox").fancybox({
     		}
     	}
 });
+
 //initializing fancybox for videos
 $('.fancybox-media').fancybox({
 		openEffect  : 'none',
@@ -23,6 +24,16 @@ $('.fancybox-media').fancybox({
 		}
 	});
 
+
+//initializing blueimp jquery-ajax-upload for file uploads
+$('#itemUpload').fileupload({
+        dataType: 'html',
+        done: function (e, data) {
+                alert(data.result);
+        }
+    });
+	
+	
 $(".addCollection").on("click",function(event) {
 	event.preventDefault();
 	$("#systemModal .modal-body").text("Hello World!");

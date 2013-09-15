@@ -1,0 +1,1 @@
+<input id="itemUpload" type="file" name="item" data-url="gallery/uploadhandler.php">
