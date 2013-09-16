@@ -193,7 +193,7 @@ $(".addCollection").on("click",function(e) {
 						$(".systemModalAlert .alertHead").html("Collection Added !");
 						$(".systemModalAlert .alertBody").html("A collection with <em>Name</em>: <em>"+cname+"</em> has been successfully created for you. Now reloading...");
 						$(".systemModalAlert").removeClass("alert-danger").addClass("alert-success").show();
-						setTimeout(function(){window.location.reload("")},3000);
+						setTimeout(function(){window.location.reload("")},2000);
 					}
 					else
 					{
@@ -301,7 +301,7 @@ $(".editCollection").on("click",function(e) {
 						$(".systemModalAlert .alertHead").html("Collection Updated !");
 						$(".systemModalAlert .alertBody").html("Your collection has been successfully updated. Now reloading...");
 						$(".systemModalAlert").removeClass("alert-danger").addClass("alert-success").show();
-						setTimeout(function(){window.location.reload("")},3000);
+						setTimeout(function(){window.location.reload("")},2000);
 					}
 					else
 					{
