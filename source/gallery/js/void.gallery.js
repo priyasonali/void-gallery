@@ -163,7 +163,7 @@ $(".addCollection").on("click",function(e) {
 				$(".systemModalAlert .alertBody").html("<em>Description</em> can be max. 420 characters in length.");
 				$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
 			}
-			else if(!cname.match(/^[0-9A-Za-z\s]+$/) || !cdesc.match(/^[0-9A-Za-z\s]+$/))
+			else if(!cname.match(/^[0-9A-Za-z\s\,\.\-]+$/) || !cdesc.match(/^[0-9A-Za-z\s\,\.\-]+$/))
 			{
 				$(".systemModalAlert .alertHead").text("Invalid Input");
 				$(".systemModalAlert .alertBody").html("Both <em>Name</em> and <em>Description</em> must be alphanumeric. No special characters or symbols allowed.");
@@ -172,7 +172,10 @@ $(".addCollection").on("click",function(e) {
 			else
 			{
 				$(".addCollectionBtn").attr('disabled','disabled');
-				$.post('addcollection.php',
+				$(".systemModalAlert .alertHead").html("Processing");
+				$(".systemModalAlert .alertBody").html("Please wait...");
+				$(".systemModalAlert").removeClass("alert-danger").addClass("alert-success").show();
+				$.post('gallery/addcollection.php',
 				{
 					cname:cname,
 					cdesc:cdesc
@@ -188,8 +191,9 @@ $(".addCollection").on("click",function(e) {
 					else if(data == "done")
 					{
 						$(".systemModalAlert .alertHead").html("Collection Added !");
-						$(".systemModalAlert .alertBody").html("A collection with <em>Name</em>: <em>"+cname+"</em> has been successfully created for you.");
+						$(".systemModalAlert .alertBody").html("A collection with <em>Name</em>: <em>"+cname+"</em> has been successfully created for you. Now reloading...");
 						$(".systemModalAlert").removeClass("alert-danger").addClass("alert-success").show();
+						setTimeout(function(){window.location.reload("")},3000);
 					}
 					else
 					{
@@ -266,7 +270,7 @@ $(".editCollection").on("click",function(e) {
 				$(".systemModalAlert .alertBody").html("<em>Description</em> can be max. 420 characters in length.");
 				$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
 			}
-			else if(!cname.match(/^[0-9A-Za-z\s]+$/) || !cdesc.match(/^[0-9A-Za-z\s]+$/))
+			else if(!cname.match(/^[0-9A-Za-z\s\,\.\-]+$/) || !cdesc.match(/^[0-9A-Za-z\s\,\.\-]+$/))
 			{
 				$(".systemModalAlert .alertHead").text("Invalid Input");
 				$(".systemModalAlert .alertBody").html("Both <em>Name</em> and <em>Description</em> must be alphanumeric. No special characters or symbols allowed.");
@@ -274,8 +278,11 @@ $(".editCollection").on("click",function(e) {
 			}
 			else
 			{
-				$(".addCollectionBtn").attr('disabled','disabled');
-				$.post('editcollection.php',
+				$(".editCollectionBtn").attr('disabled','disabled');
+				$(".systemModalAlert .alertHead").html("Processing");
+				$(".systemModalAlert .alertBody").html("Please wait...");
+				$(".systemModalAlert").removeClass("alert-danger").addClass("alert-success").show();
+				$.post('gallery/editcollection.php',
 				{
 					cid:cid,
 					cname:cname,
@@ -287,13 +294,14 @@ $(".editCollection").on("click",function(e) {
 						$(".systemModalAlert .alertHead").text("Invalid Name");
 						$(".systemModalAlert .alertBody").html("A collection with <em>Name</em>: <em>"+cname+"</em> already exists ! Try again with a different <em>Name</em>.");
 						$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
-						$(".addCollectionBtn").removeAttr('disabled');
+						$(".editCollectionBtn").removeAttr('disabled');
 					}
 					else if(data == "done")
 					{
 						$(".systemModalAlert .alertHead").html("Collection Updated !");
-						$(".systemModalAlert .alertBody").html("Your collection has been successfully updated.");
+						$(".systemModalAlert .alertBody").html("Your collection has been successfully updated. Now reloading...");
 						$(".systemModalAlert").removeClass("alert-danger").addClass("alert-success").show();
+						setTimeout(function(){window.location.reload("")},3000);
 					}
 					else
 					{
@@ -301,7 +309,7 @@ $(".editCollection").on("click",function(e) {
 						$(".systemModalAlert .alertBody").html("An unexpected error has occurred which the Gallery Controller could not handle.\
 						Please retry or contact the administrator.");
 						$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
-						$(".addCollectionBtn").removeAttr('disabled');
+						$(".editCollectionBtn").removeAttr('disabled');
 					}
 				});
 			}
