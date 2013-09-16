@@ -306,7 +306,6 @@ $(".editCollection").on("click",function(e) {
 				$(".systemModalAlert .alertHead").html("Processing");
 				$(".systemModalAlert .alertBody").html("Please wait...");
 				$(".systemModalAlert").removeClass("alert-danger").addClass("alert-success").show();
-				alert(cstatus);
 				$.post('gallery/editcollection.php',
 				{
 					cid:cid,
