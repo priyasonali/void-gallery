@@ -3,7 +3,9 @@
 $(function(){
 //============
 
-//declaring functions
+//declaring functions and plugins
+
+//dependency function for jcrop
 function updateCoords(c)
 	{
 	$('#x').val(c.x);
@@ -12,8 +14,17 @@ function updateCoords(c)
 	$('#h').val(c.h);
 	};
 
+//adding callback to $().html() function
+$.fn.htmlOriginal = $.fn.html;
+$.fn.html = function(html,callback){
+  this.htmlOriginal(html);
+  if(typeof callback == "function"){
+    callback();
+  }
+}
+
 //preparing DOM elements
-$('.uploadProgress .progress-bar').hide();
+$(".uploadProgress .progress-bar").hide();
 
 //initializing fancybox for photos
 $(".fancybox").fancybox({
@@ -93,10 +104,209 @@ $('#itemUpload').fileupload({
     });
 	
 
-//handling DOM events	
-$(".addCollection").on("click",function(event) {
-	event.preventDefault();
-	$("#systemModal .modal-body").text("Hello World!");
+//handling DOM events
+
+//add new collection
+$(".addCollection").on("click",function(e) {
+	e.preventDefault();
+	$("#systemModal .modal-title").text("New Collection");
+	$("#systemModal .modal-body").html("\
+	<form role='form'>\
+		  <div class='form-group'>\
+			<label for='collectionName'>Name</label>\
+			<input type='text' class='form-control' id='collectionName' placeholder='Collection Name'>\
+		  </div>\
+		  <div class='form-group'>\
+			<label for='collectionDesc'>Description</label>\
+			<textarea class='form-control' id='collectionDesc' rows='5' placeholder='Collection Description'></textarea>\
+		  </div>\
+	  </form>\
+	  <div class='alert alert-dismissable systemModalAlert'>\
+		  <button type='button' class='close hideBtn'>&times;</button>\
+		  <h3 class='alertHead'></h3><p class='alertBody'></p>.\
+	  </div>\
+	", 
+	function()
+	{
+		$(".systemModalAlert").hide();
+		$(".hideBtn").on("click",
+		function()
+		{
+			$(".systemModalAlert").hide();
+		});
+	});
+	
+	$("#systemModal .modal-footer").html("\
+		<button type='button' class='btn btn-primary addCollectionBtn'>Add Collection</button>\
+	",
+	function()
+	{
+		$(".addCollectionBtn").on("click",function() {
+			var cname = $("#collectionName").val();
+			var cdesc = $("#collectionDesc").val();
+			//validation
+			if(cname == 0 || cdesc == 0)
+			{
+				$(".systemModalAlert .alertHead").text("Empty Field");
+				$(".systemModalAlert .alertBody").html("Both <em>Name</em> and <em>Description</em> of your new collection are required.");
+				$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
+			}
+			else if(cname.length > 20)
+			{
+				$(".systemModalAlert .alertHead").text("Invalid Name Length");
+				$(".systemModalAlert .alertBody").html("<em>Name</em> can be max. 20 characters in length.");
+				$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
+			}
+			else if(cdesc.length > 420)
+			{
+				$(".systemModalAlert .alertHead").text("Invalid Description Length");
+				$(".systemModalAlert .alertBody").html("<em>Description</em> can be max. 420 characters in length.");
+				$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
+			}
+			else if(!cname.match(/^[0-9A-Za-z\s]+$/) || !cdesc.match(/^[0-9A-Za-z\s]+$/))
+			{
+				$(".systemModalAlert .alertHead").text("Invalid Input");
+				$(".systemModalAlert .alertBody").html("Both <em>Name</em> and <em>Description</em> must be alphanumeric. No special characters or symbols allowed.");
+				$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
+			}
+			else
+			{
+				$(".addCollectionBtn").attr('disabled','disabled');
+				$.post('addcollection.php',
+				{
+					cname:cname,
+					cdesc:cdesc
+				},
+				function(data,status){
+					if(data == "exists")
+					{
+						$(".systemModalAlert .alertHead").text("Invalid Name");
+						$(".systemModalAlert .alertBody").html("A collection with <em>Name</em>: <em>"+cname+"</em> already exists ! Try again with a different <em>Name</em>.");
+						$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
+						$(".addCollectionBtn").removeAttr('disabled');
+					}
+					else if(data == "done")
+					{
+						$(".systemModalAlert .alertHead").html("Collection Added !");
+						$(".systemModalAlert .alertBody").html("A collection with <em>Name</em>: <em>"+cname+"</em> has been successfully created for you.");
+						$(".systemModalAlert").removeClass("alert-danger").addClass("alert-success").show();
+					}
+					else
+					{
+						$(".systemModalAlert .alertHead").html("Unexpected Error");
+						$(".systemModalAlert .alertBody").html("An unexpected error has occurred which the Gallery Controller could not handle.\
+						Please retry or contact the administrator.");
+						$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
+						$(".addCollectionBtn").removeAttr('disabled');
+					}
+				});
+			}
+		});
+	});
+	$("#systemModal").modal();
+});
+
+//edit collection
+$(".editCollection").on("click",function(e) {
+	e.preventDefault();
+	var cname = $(this).attr("data-cname");
+	var cdesc = $(this).attr("data-cdesc");
+	var cid = $(this).attr("data-cid");
+	$("#systemModal .modal-title").text("Edit Collection");
+	$("#systemModal .modal-body").html("\
+	<form role='form'>\
+		  <div class='form-group'>\
+			<label for='collectionName'>Name</label>\
+			<input type='text' class='form-control' id='collectionName' value='"+cname+"' placeholder='Collection Name'>\
+		  </div>\
+		  <div class='form-group'>\
+			<label for='collectionDesc'>Description</label>\
+			<textarea class='form-control' id='collectionDesc' rows='5' placeholder='Collection Description'>"+cdesc+"</textarea>\
+		  </div>\
+	  </form>\
+	  <div class='alert alert-dismissable systemModalAlert'>\
+		  <button type='button' class='close hideBtn'>&times;</button>\
+		  <h3 class='alertHead'></h3><p class='alertBody'></p>.\
+	  </div>\
+	", 
+	function()
+	{
+		$(".systemModalAlert").hide();
+		$(".hideBtn").on("click",
+		function()
+		{
+			$(".systemModalAlert").hide();
+		});
+	});
+	
+	$("#systemModal .modal-footer").html("\
+		<button type='button' class='btn btn-primary editCollectionBtn'>Update</button>\
+	",
+	function()
+	{
+		$(".editCollectionBtn").on("click",function() {
+			cname = $("#collectionName").val();
+			cdesc = $("#collectionDesc").val();
+			//validation
+			if(cname == 0 || cdesc == 0)
+			{
+				$(".systemModalAlert .alertHead").text("Empty Field");
+				$(".systemModalAlert .alertBody").html("Both <em>Name</em> and <em>Description</em> of your collection are required.");
+				$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
+			}
+			else if(cname.length > 20)
+			{
+				$(".systemModalAlert .alertHead").text("Invalid Name Length");
+				$(".systemModalAlert .alertBody").html("<em>Name</em> can be max. 20 characters in length.");
+				$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
+			}
+			else if(cdesc.length > 420)
+			{
+				$(".systemModalAlert .alertHead").text("Invalid Description Length");
+				$(".systemModalAlert .alertBody").html("<em>Description</em> can be max. 420 characters in length.");
+				$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
+			}
+			else if(!cname.match(/^[0-9A-Za-z\s]+$/) || !cdesc.match(/^[0-9A-Za-z\s]+$/))
+			{
+				$(".systemModalAlert .alertHead").text("Invalid Input");
+				$(".systemModalAlert .alertBody").html("Both <em>Name</em> and <em>Description</em> must be alphanumeric. No special characters or symbols allowed.");
+				$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
+			}
+			else
+			{
+				$(".addCollectionBtn").attr('disabled','disabled');
+				$.post('editcollection.php',
+				{
+					cid:cid,
+					cname:cname,
+					cdesc:cdesc					
+				},
+				function(data,status){
+					if(data == "exists")
+					{
+						$(".systemModalAlert .alertHead").text("Invalid Name");
+						$(".systemModalAlert .alertBody").html("A collection with <em>Name</em>: <em>"+cname+"</em> already exists ! Try again with a different <em>Name</em>.");
+						$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
+						$(".addCollectionBtn").removeAttr('disabled');
+					}
+					else if(data == "done")
+					{
+						$(".systemModalAlert .alertHead").html("Collection Updated !");
+						$(".systemModalAlert .alertBody").html("Your collection has been successfully updated.");
+						$(".systemModalAlert").removeClass("alert-danger").addClass("alert-success").show();
+					}
+					else
+					{
+						$(".systemModalAlert .alertHead").html("Unexpected Error");
+						$(".systemModalAlert .alertBody").html("An unexpected error has occurred which the Gallery Controller could not handle.\
+						Please retry or contact the administrator.");
+						$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
+						$(".addCollectionBtn").removeAttr('disabled');
+					}
+				});
+			}
+		});
+	});
 	$("#systemModal").modal();
 });
 
