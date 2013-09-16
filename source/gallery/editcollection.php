@@ -1,10 +1,11 @@
 <?php
-require 'dbconnect.php';
 
+require 'dbconnect.php';
 
 $cid = mysqli_real_escape_string($con,$_POST["cid"]);
 $cname = mysqli_real_escape_string($con,$_POST["cname"]);
 $cdesc = mysqli_real_escape_string($con,$_POST["cdesc"]); 
+$cstatus = mysqli_real_escape_string($con,$_POST["cstatus"]); 
 $date = date("d/m/y"); 
 $deny=0;
 
@@ -37,7 +38,7 @@ echo "exists";
 }
 else
 {
-$check= mysqli_query($con,"UPDATE collection SET cname='".$cname."', cdesc='".$cdesc."', cdate='".$date."' WHERE cid=".$cid."");
+$check= mysqli_query($con,"UPDATE collection SET cname='".$cname."', cdesc='".$cdesc."', cdate='".$date."', cstatus=".$cstatus." WHERE cid=".$cid."");
 echo "done";
 
 

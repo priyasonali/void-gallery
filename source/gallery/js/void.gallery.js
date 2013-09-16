@@ -215,6 +215,25 @@ $(".editCollection").on("click",function(e) {
 	e.preventDefault();
 	var cname = $(this).attr("data-cname");
 	var cdesc = $(this).attr("data-cdesc");
+	var cstatus = $(this).attr("data-cstatus");
+	if(cstatus == 1)
+	{
+		var appendCode = "\
+			<div class='form-group'>\
+				<label for='collectionStatus'>Status </label>\
+				<input type='radio' class='statusIndicator' name='statusIndicator' value='1' checked> Visible\
+				<input type='radio' class='statusIndicator' name='statusIndicator' value='0'> Hidden\
+			 </div>";
+	}
+	else
+	{
+		var appendCode = "\
+			<div class='form-group'>\
+				<label>Status</label>\
+				<input type='radio' class='statusIndicator' name='statusIndicator' value='1'> Visible\
+				<input type='radio' class='statusIndicator' name='statusIndicator' value='0' checked> Hidden\
+			 </div>";
+	}	 
 	var cid = $(this).attr("data-cid");
 	$("#systemModal .modal-title").text("Edit Collection");
 	$("#systemModal .modal-body").html("\
@@ -226,7 +245,7 @@ $(".editCollection").on("click",function(e) {
 		  <div class='form-group'>\
 			<label for='collectionDesc'>Description</label>\
 			<textarea class='form-control' id='collectionDesc' rows='5' placeholder='Collection Description'>"+cdesc+"</textarea>\
-		  </div>\
+		  </div>"+appendCode+"\
 	  </form>\
 	  <div class='alert alert-dismissable systemModalAlert'>\
 		  <button type='button' class='close hideBtn'>&times;</button>\
@@ -236,6 +255,11 @@ $(".editCollection").on("click",function(e) {
 	function()
 	{
 		$(".systemModalAlert").hide();
+		$(".statusIndicator").on("click",
+		function()
+		{	
+			cstatus = $(this).val();
+		});
 		$(".hideBtn").on("click",
 		function()
 		{
@@ -282,11 +306,13 @@ $(".editCollection").on("click",function(e) {
 				$(".systemModalAlert .alertHead").html("Processing");
 				$(".systemModalAlert .alertBody").html("Please wait...");
 				$(".systemModalAlert").removeClass("alert-danger").addClass("alert-success").show();
+				alert(cstatus);
 				$.post('gallery/editcollection.php',
 				{
 					cid:cid,
 					cname:cname,
-					cdesc:cdesc					
+					cdesc:cdesc,
+					cstatus:cstatus					
 				},
 				function(data,status){
 					if(data == "exists")
