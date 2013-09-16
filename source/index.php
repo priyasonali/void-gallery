@@ -37,7 +37,7 @@ $theme="dark";
 </header>
 
 <!--initializing void gallery - collection view-->
-<?php require "gallery/initcollection.php"; ?>
+<?php require "gallery/gallerycontroller.php"; ?>
 
 <!--finalizing void gallery-->
 <?php require "gallery/fingallery.php"; ?>
