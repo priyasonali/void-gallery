@@ -3,7 +3,15 @@
 $(function(){
 //============
 
+
+//===================
+//declaring variables
+//===================
+$alphaNumericPattern = /^[0-9A-Za-z\s]+$/;
+
+//===============================
 //declaring functions and plugins
+//===============================
 
 //dependency function for jcrop
 function updateCoords(c)
@@ -163,10 +171,10 @@ $(".addCollection").on("click",function(e) {
 				$(".systemModalAlert .alertBody").html("<em>Description</em> can be max. 420 characters in length.");
 				$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
 			}
-			else if(!cname.match(/^[0-9A-Za-z\s\,\.\-]+$/) || !cdesc.match(/^[0-9A-Za-z\s\,\.\-]+$/))
+			else if(!cname.match($alphaNumericPattern))
 			{
 				$(".systemModalAlert .alertHead").text("Invalid Input");
-				$(".systemModalAlert .alertBody").html("Both <em>Name</em> and <em>Description</em> must be alphanumeric. No special characters or symbols allowed.");
+				$(".systemModalAlert .alertBody").html("<em>Name</em> must be alphanumeric. No special characters or symbols allowed.");
 				$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
 			}
 			else
@@ -294,10 +302,10 @@ $(".editCollection").on("click",function(e) {
 				$(".systemModalAlert .alertBody").html("<em>Description</em> can be max. 420 characters in length.");
 				$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
 			}
-			else if(!cname.match(/^[0-9A-Za-z\s\,\.\-]+$/) || !cdesc.match(/^[0-9A-Za-z\s\,\.\-]+$/))
+			else if(!cname.match($alphaNumericPattern))
 			{
 				$(".systemModalAlert .alertHead").text("Invalid Input");
-				$(".systemModalAlert .alertBody").html("Both <em>Name</em> and <em>Description</em> must be alphanumeric. No special characters or symbols allowed.");
+				$(".systemModalAlert .alertBody").html("<em>Name</em> must be alphanumeric. No special characters or symbols allowed.");
 				$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
 			}
 			else
