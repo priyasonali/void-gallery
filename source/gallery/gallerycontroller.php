@@ -9,13 +9,22 @@ return 0;
 }
 
 $test = false;
-$chklist = array("initcollection","initphoto","initvideo","initupload","viewcollection");
+$chklist = array(
+					"initcollection",
+					"initphoto",
+					"initvideo",
+					"initupload",
+					"viewcollection",
+					"addvideo"
+				);
+				
 $msglist = array(
 					'<strong>Void Gallery [<em>Error Code: 0</em>]: </strong>Improper error handling or tampered link.
 					<a href="?p=initcollection" class="alert-link">Click here</a> to re-initialize.',
 					'<strong>Void Gallery [<em>Error Code: 1</em>]: </strong>Tampered/Broken link detected ! Unable to traverse.
 				  <a href="?p=initcollection" class="alert-link">Click here</a> to re-initialize.',
-					'<strong>Void Gallery [<em>Error Code: 2</em>]: This video gallery is empty.'
+					'<strong>Void Gallery [<em>Error Code: 2</em>]: </strong>This photo gallery is empty.',
+					'<strong>Void Gallery [<em>Error Code: 3</em>]: </strong>This video gallery is empty.'
 				);
 
 function showmsg($msg)

@@ -1,6 +1,6 @@
 <section class="container">
 	<div class="page-header">
-		<h1>Add photo to <span class="text-info">Photography</span> <a class="addCollection" title="Add Photo" href="#"><span class="glyphicon glyphicon-plus-sign"></span></a></h1>
+		<h1>Add photo to <span class="text-info">Photography</span></h1>
 	</div>
 </section>
 
@@ -13,5 +13,4 @@
 	</div>
 </div>
 <small class="text-info">*Only JPEG (.jpg) images of max. 1MB allowed.</small>
-
 </section>

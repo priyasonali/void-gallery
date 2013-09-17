@@ -376,6 +376,91 @@ $(".addToCollection").on("click",function(e) {
 	$("#systemModal").modal();
 });
 
+$(".videoUrl").on("blur",function() {
+	if($("#videoUrl1").val() != 0)
+	var videoCode = $("#videoUrl1").val();
+	else
+	var videoCode = "YE7VzlLtp-4";
+	$(".showVideo").attr("src","//www.youtube.com/embed/"+videoCode);
+});
+
+$(".addVideoBtn").on("click",
+	function()
+	{
+	if($("#videoUrl2").val() != 0)
+	var vcode = $("#videoUrl2").val();
+	else
+	var vcode = $("#videoUrl1").val();
+	var vname = $("#videoName").val();
+	var vdesc = $("#videoDesc").val();
+	var cid = $(this).attr("data-cid");
+			//validation
+			if(vname == 0 || vdesc == 0)
+			{
+				$(".systemAlert .alertHead").text("Empty Field");
+				$(".systemAlert .alertBody").html("Both <em>Name</em> and <em>Description</em> of your video are required.");
+				$(".systemAlert").removeClass("alert-success").addClass("alert-danger").show();
+			}
+			else if(vname.length > 20)
+			{
+				$(".systemAlert .alertHead").text("Invalid Name Length");
+				$(".systemAlert .alertBody").html("<em>Name</em> can be max. 20 characters in length.");
+				$(".systemAlert").removeClass("alert-success").addClass("alert-danger").show();
+			}
+			else if(vdesc.length > 140)
+			{
+				$(".systemAlert .alertHead").text("Invalid Description Length");
+				$(".systemAlert .alertBody").html("<em>Description</em> can be max. 140 characters in length.");
+				$(".systemAlert").removeClass("alert-success").addClass("alert-danger").show();
+			}
+			else if(!vname.match($alphaNumericPattern))
+			{
+				$(".systemAlert .alertHead").text("Invalid Input");
+				$(".systemAlert .alertBody").html("<em>Name</em> must be alphanumeric. No special characters or symbols allowed.");
+				$(".systemAlert").removeClass("alert-success").addClass("alert-danger").show();
+			}
+			else
+			{
+				$(".addVideoBtn").attr('disabled','disabled');
+				$(".systemAlert .alertHead").html("Processing");
+				$(".systemAlert .alertBody").html("Please wait...");
+				$(".systemAlert").removeClass("alert-danger").addClass("alert-success").show();
+				$.post('gallery/addvideo.php',
+				{
+					cid:cid,
+					vname:vname,
+					vdesc:vdesc,
+					vcode:vcode					
+				},
+				function(data,status){
+					if(data == "exists")
+					{
+						$(".systemAlert .alertHead").text("Invalid Name");
+						$(".systemAlert .alertBody").html("A video with the given name or code already exists !");
+						$(".systemAlert").removeClass("alert-success").addClass("alert-danger").show();
+						$(".addVideoBtn").removeAttr('disabled');
+					}
+					else if(data == "done")
+					{
+						$(".systemAlert .alertHead").html("Video Added !");
+						$(".systemAlert .alertBody").html("Your video has been successfully added. Now redirecting...");
+						$(".systemAlert").removeClass("alert-danger").addClass("alert-success").show();
+						setTimeout(function(){window.location.assign("?p=initvideo?cid="+cid)},1000);
+					}
+					else
+					{
+						$(".systemAlert .alertHead").html("Unexpected Error");
+						$(".systemAlert .alertBody").html("An unexpected error has occurred which the Gallery Controller could not handle.\
+						Please retry or contact the administrator.");
+						$(".systemAlert").removeClass("alert-success").addClass("alert-danger").show();
+						$(".addVideoBtn").removeAttr('disabled');
+					}
+				});
+			}
+	
+});
+
+
 //styling helper
 $(".collectionView .panel, .photoView .panel, .videoView .panel").on("mouseover",function() {
 	$(this).removeClass("panel-default").addClass("panel-primary");
