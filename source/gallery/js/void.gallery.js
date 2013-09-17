@@ -356,32 +356,18 @@ $(".addToCollection").on("click",function(e) {
 	e.preventDefault();
 	var cid = $(this).attr("data-cid");
 	$("#systemModal .modal-title").text("Add Item");
-	//working here....
 	$("#systemModal .modal-body").html("\
 		<div class='row'>\
 		<div class='col-md-6 text-center'>\
-			<a class='addPhotoLink' href='?p=initupload'><img src='gallery/img/photo.png' width='150px' height='150px' alt='add photo'/></a>\
+			<a class='addPhotoLink' href='?p=initupload&cid="+cid+"'><img src='gallery/img/photo.png' width='150px' height='150px' alt='add photo'/></a>\
 			<p class = 'lead'>Add Photo</p>\
 		</div>\
 		<div class='col-md-6 text-center'>\
-			<a class='addVideoLink' href='#'><img src='gallery/img/video.png' width='150px' height='150px' alt='add video'/></a>\
+			<a class='addVideoLink' href='?p=addvideo&cid="+cid+"'><img src='gallery/img/video.png' width='150px' height='150px' alt='add video'/></a>\
 			<p class = 'lead'>Add Video</p>\
 		</div>\
 		</div>\
-	",
-	function(){
-		$(".addVideoLink").on("click",
-		function(e)
-		{
-			e.preventDefault();
-			$("#systemModal .modal-body").html("\
-				
-			",
-			function()
-			{
-				
-			});			
-		});
+	");
 	
 	$("#systemModal .modal-footer").html("\
 		<button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>\
