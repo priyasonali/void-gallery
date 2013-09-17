@@ -1,3 +1,27 @@
+<?php
+require 'dbconnect.php';
+if(!empty($_REQUEST['cid']))
+{
+	$cid = $_REQUEST['cid'];
+}
+else
+{
+	echo '<script>window.location.assign("?p=error1");</script>';
+}
+$check=0;
+$result = mysqli_query($con,"SELECT * FROM collection WHERE cid=$cid ");
+		while($row = mysqli_fetch_array($result))
+			{
+				$cid = $row['cid'];
+				$cname = $row['cname']; 
+				$cdesc = $row['cdesc']; 
+				$cdate = $row['cdate']; 
+				$cstatus = $row['cstatus'];
+				$check=1;
+			}
+if($check==0 || !is_numeric($cid))	echo '<script>window.location.assign("?p=error1");</script>';
+
+?>
 <section class="container">
 	<div class="page-header">
 		<h1>Picnic to Chandipur <a class="addCollection" title="Edit Collection"  href="#"><span class="glyphicon glyphicon-edit"></span></a></h1>
@@ -7,19 +31,16 @@
 <section class="container standaloneView">
 	<div class="row">
 		<blockquote>
-		Bacon ipsum dolor sit amet chuck bacon aliqua, aliquip pastrami turducken tri-tip anim ut ut leberkas sausage in voluptate prosciutto. 
-		Turkey quis salami bresaola et jerky bacon tempor sausage tail. Proident magna flank tenderloin. Excepteur sed chicken pork ham hock rump. 
-		Pork loin dolor sirloin jerky leberkas ad eu nisi ball tip tail minim beef ribs do commodo dolore. 
-		Short ribs short loin leberkas eiusmod et.
+		<?php echo $cdesc; ?>
 		</blockquote>
 	</div>
 	<div class="row">
 		<div class="col-md-4 col-md-offset-1 text-center">
-			<a href="?p=initphoto" title="View Photos"><img src="gallery/img/photo.png" width="200px" height="200px" alt="photos"/></a><br>
+			<a href="?p=initphoto&cid=<?php echo $cid; ?>" title="View Photos"><img src="gallery/img/photo.png" width="200px" height="200px" alt="photos"/></a><br>
 			<h2>Photos <a class="addPhoto" title="Add Photo"  href="#"><span class="glyphicon glyphicon-plus-sign"></span></a></h2>
 		</div>
 		<div class="col-md-4 col-md-offset-2 text-center">
-			<a href="?p=error2" title="Empty"><img src="gallery/img/video-disabled.png" width="200px" height="200px" alt="videos"/></a><br>
+			<a href="?p=initvideo&cid=<?php echo $cid; ?>" title="Empty"><img src="gallery/img/video-disabled.png" width="200px" height="200px" alt="videos"/></a><br>
 			<h2>Videos <a class="addVideo" title="Add Video"  href="#"><span class="glyphicon glyphicon-plus-sign"></span></a></h2>
 		</div>
 	</div>
