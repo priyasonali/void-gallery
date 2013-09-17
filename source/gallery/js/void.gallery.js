@@ -224,6 +224,7 @@ $(".editCollection").on("click",function(e) {
 	var cname = $(this).attr("data-cname");
 	var cdesc = $(this).attr("data-cdesc");
 	var cstatus = $(this).attr("data-cstatus");
+	var cid = $(this).attr("data-cid");
 	if(cstatus == 1)
 	{
 		var appendCode = "\
@@ -241,8 +242,7 @@ $(".editCollection").on("click",function(e) {
 				<input type='radio' class='statusIndicator' name='statusIndicator' value='1'> Visible\
 				<input type='radio' class='statusIndicator' name='statusIndicator' value='0' checked> Hidden\
 			 </div>";
-	}	 
-	var cid = $(this).attr("data-cid");
+	}
 	$("#systemModal .modal-title").text("Edit Collection");
 	$("#systemModal .modal-body").html("\
 	<form role='form'>\
@@ -351,6 +351,46 @@ $(".editCollection").on("click",function(e) {
 	$("#systemModal").modal();
 });
 
+//add items to collection
+$(".addToCollection").on("click",function(e) {
+	e.preventDefault();
+	var cid = $(this).attr("data-cid");
+	$("#systemModal .modal-title").text("Add Item");
+	//working here....
+	$("#systemModal .modal-body").html("\
+		<div class='row'>\
+		<div class='col-md-6 text-center'>\
+			<a class='addPhotoLink' href='?p=initupload'><img src='gallery/img/photo.png' width='150px' height='150px' alt='add photo'/></a>\
+			<p class = 'lead'>Add Photo</p>\
+		</div>\
+		<div class='col-md-6 text-center'>\
+			<a class='addVideoLink' href='#'><img src='gallery/img/video.png' width='150px' height='150px' alt='add video'/></a>\
+			<p class = 'lead'>Add Video</p>\
+		</div>\
+		</div>\
+	",
+	function(){
+		$(".addVideoLink").on("click",
+		function(e)
+		{
+			e.preventDefault();
+			$("#systemModal .modal-body").html("\
+				
+			",
+			function()
+			{
+				
+			});			
+		});
+	
+	$("#systemModal .modal-footer").html("\
+		<button type='button' class='btn btn-default' data-dismiss='modal'>Cancel</button>\
+	");
+	
+	$("#systemModal").modal();
+});
+
+//styling helper
 $(".collectionView .panel, .photoView .panel, .videoView .panel").on("mouseover",function() {
 	$(this).removeClass("panel-default").addClass("panel-primary");
 }).on("mouseout",function() {

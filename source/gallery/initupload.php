@@ -6,12 +6,12 @@
 
 <section class="container photoUpload">
 <div class="row lead">
-	<p>First, choose a photo to upload.</p>
+	<p>First, choose a photo* to upload.</p>
 	<input id="itemUpload" type="file" name="item" data-url="gallery/uploadhandler.php">
-	<small class="text-info">(Only JPEG(.jpg) images of max. 1MB allowed.)</small>
 	<div class="uploadProgress">
 	  <div class="progress-bar" style="width: 0%;"></div>
 	</div>
 </div>
+<small class="text-info">*Only JPEG (.jpg) images of max. 1MB allowed.</small>
 
 </section>
