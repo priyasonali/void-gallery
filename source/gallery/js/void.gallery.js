@@ -12,7 +12,13 @@ $alphaNumericPattern = /^[0-9A-Za-z\s]+$/;
 //===============================
 //declaring functions and plugins
 //===============================
-
+$(".hideBtn").on("click",
+function()
+{
+	$(".systemAlert").hide();
+});
+		
+		
 //dependency function for jcrop
 function updateCoords(c)
 	{
