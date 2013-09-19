@@ -431,7 +431,7 @@ $(".addVideoBtn").on("click",
 				$(".systemAlert .alertHead").html("Processing");
 				$(".systemAlert .alertBody").html("Please wait...");
 				$(".systemAlert").removeClass("alert-danger").addClass("alert-success").show();
-				$.post('gallery/addvideo.php',
+				$.post('gallery/addnewvideo.php',
 				{
 					cid:cid,
 					vname:vname,
