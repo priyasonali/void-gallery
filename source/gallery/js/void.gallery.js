@@ -397,7 +397,6 @@ $(".deleteCollection").on("click",function(e) {
 	function()
 	{
 		$(".deleteCollectionBtn").on("click",function(){
-			var cid = $(this).attr("data-cid");
 			$(".deleteCollectionBtn").attr('disabled','disabled');
 			$.post('gallery/deletecollection.php',
 				{
