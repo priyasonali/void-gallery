@@ -50,14 +50,14 @@ echo '<h1>'.$cname.' <a class="editCollection" title="Edit Collection" data-cid=
 		echo '<a href="?p=initphoto&cid='.$cid.'" title="View Photos"><img src="gallery/img/photo.png" width="200px" height="200px" alt="photos"/></a><br>';
 		else
 		echo '<a href="#" title="Empty"><img src="gallery/img/photo-disabled.png" width="200px" height="200px" alt="photos"/></a><br>';
-		echo '<h2>Photos <a class="addPhoto" title="Add Photo"  href="#"><span class="glyphicon glyphicon-plus-sign"></span></a></h2>
+		echo '<h2>Photos <a class="addPhoto" title="Add Photo"  href="?p=initupload&cid='.$cid.'"><span class="glyphicon glyphicon-plus-sign"></span></a></h2>
 		</div>
 		<div class="col-md-4 col-md-offset-2 text-center">';
 		if($vassign==1)
 		echo '<a href="?p=initvideo&cid='.$cid.'" title="View Video"><img src="gallery/img/video.png" width="200px" height="200px" alt="videos"/></a><br>';
 		else
 		echo '<a href="#" title="Empty"><img src="gallery/img/video-disabled.png" width="200px" height="200px" alt="videos"/></a><br>';
-		echo '<h2>Videos <a class="addVideo" title="Add Video"  href="#"><span class="glyphicon glyphicon-plus-sign"></span></a></h2>
+		echo '<h2>Videos <a class="addVideo" title="Add Video"  href="?p=addvideo&cid='.$cid.'"><span class="glyphicon glyphicon-plus-sign"></span></a></h2>
 		</div>
 	</div>
 </section>

@@ -382,6 +382,48 @@ $(".addToCollection").on("click",function(e) {
 	$("#systemModal").modal();
 });
 
+//delete collection
+$(".deleteCollection").on("click",function(e) {
+	e.preventDefault();
+	var cid = $(this).attr("data-cid");
+	$("#systemModal .modal-title").text("Delete Collection");
+	$("#systemModal .modal-body").html("<p class='text-danger lead'>Are you sure ?</p><p class='text-danger'>Deleting \
+	this collection will delete all its contents including added photos and videos !</p>");
+	
+	$("#systemModal .modal-footer").html("\
+		<button type='button' class='btn btn-default' data-dismiss='modal'>No</button>\
+		<button type='button' class='btn btn-danger deleteCollectionBtn'>Yes</button>\
+	",
+	function()
+	{
+		$(".deleteCollectionBtn").on("click",function(){
+			var cid = $(this).attr("data-cid");
+			$(".deleteCollectionBtn").attr('disabled','disabled');
+			$.post('gallery/deletecollection.php',
+				{
+					cid:cid,					
+				},
+				function(data,status)
+				{
+					if(data == "done")
+					{
+						$("#systemModal .modal-body").html("<p class='text-success'>Your collection has been deleted successfully. Standby for reload...</p>");
+						setTimeout(function(){window.location.reload()},1000);
+					}
+					else
+					{
+						$("#systemModal .modal-title").html("<h3 class='text-danger'>Unexpected Error</h3>");
+						$("#systemModal .modal-body").html("<p class='text-danger'>An unexpected error has occurred which the Gallery Controller could not handle.\
+						Please retry or contact the administrator.</p>");
+						$("#systemModal .modal-footer").html("<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>");
+					}
+				});
+		});	
+	});
+	
+	$("#systemModal").modal();
+});
+
 $(".videoUrl").on("blur",function() {
 	if($("#videoUrl1").val() != 0)
 	var videoCode = $("#videoUrl1").val();
@@ -431,7 +473,7 @@ $(".addVideoBtn").on("click",
 				$(".systemAlert .alertHead").html("Processing");
 				$(".systemAlert .alertBody").html("Please wait...");
 				$(".systemAlert").removeClass("alert-danger").addClass("alert-success").show();
-				$.post('gallery/addvideo.php',
+				$.post('gallery/addnewvideo.php',
 				{
 					cid:cid,
 					vname:vname,
