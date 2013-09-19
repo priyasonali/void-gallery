@@ -423,6 +423,7 @@ $(".deleteCollection").on("click",function(e) {
 	$("#systemModal").modal();
 });
 
+//add video
 $(".videoUrl").on("blur",function() {
 	if($("#videoUrl1").val() != 0)
 	var videoCode = $("#videoUrl1").val();
@@ -442,10 +443,10 @@ $(".addVideoBtn").on("click",
 	var vdesc = $("#videoDesc").val();
 	var cid = $(this).attr("data-cid");
 			//validation
-			if(vname == 0 || vdesc == 0)
+			if(vname == 0 || vdesc == 0 || vcode == 0)
 			{
 				$(".systemAlert .alertHead").text("Empty Field");
-				$(".systemAlert .alertBody").html("Both <em>Name</em> and <em>Description</em> of your video are required.");
+				$(".systemAlert .alertBody").html("<em>Video Code</em>, <em>Name</em> and <em>Description</em> are all required fields. They cannot be left blank.");
 				$(".systemAlert").removeClass("alert-success").addClass("alert-danger").show();
 			}
 			else if(vname.length > 20)

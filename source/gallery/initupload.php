@@ -7,7 +7,7 @@
 <section class="container photoUpload">
 <div class="row lead">
 	<p>First, choose a photo* to upload.</p>
-	<input id="itemUpload" type="file" name="item" data-url="gallery/uploadhandler.php">
+	<input id="itemUpload" data-cid="33" type="file" name="item" data-url="gallery/uploadhandler.php">
 	<div class="uploadProgress">
 	  <div class="progress-bar" style="width: 0%;"></div>
 	</div>

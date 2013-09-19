@@ -51,6 +51,7 @@ echo '<script>window.location.assign("?p=error1");</script>';
 		  </div>
 		  <button type="button" class="btn btn-primary addVideoBtn" data-cid="<?php echo $cid; ?>">Add Video</button>
 		</form>
+		<br>
 		<div class='alert alert-dismissable systemAlert'>
 		  <button type='button' class='close hideBtn'>&times;</button>
 		  <h3 class='alertHead'></h3><p class='alertBody'></p>.
