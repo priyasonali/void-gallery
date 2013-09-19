@@ -1,0 +1,1 @@
+<?phprequire 'dbconnect.php';$cid=mysqli_real_escape_string($con,$_POST['cid']);mysqli_query($con,"DELETE FROM collection WHERE cid=".$cid."" );mysqli_query($con,"DELETE FROM assign WHERE cid=".$cid."" );echo "done";?>

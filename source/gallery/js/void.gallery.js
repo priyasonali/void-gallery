@@ -493,7 +493,7 @@ $(".addVideoBtn").on("click",
 						$(".systemAlert .alertHead").html("Video Added !");
 						$(".systemAlert .alertBody").html("Your video has been successfully added. Now redirecting...");
 						$(".systemAlert").removeClass("alert-danger").addClass("alert-success").show();
-						setTimeout(function(){window.location.assign("?p=initvideo?cid="+cid)},1000);
+						setTimeout(function(){window.location.assign("?p=initvideo&cid="+cid)},1000);
 					}
 					else
 					{

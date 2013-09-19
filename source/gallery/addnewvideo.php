@@ -34,7 +34,7 @@ if($deny>=1)
 else
 	{
 		$check= mysqli_query($con,"INSERT INTO video (vcode, vname, vdesc, vdate) VALUES ('".$vcode."','".$vname."','".$vdesc."', '".$vdate."')");
-		$result1 = mysqli_query($con,"SELECT * FROM video WHERE vcode=$vcode ");
+		$result1 = mysqli_query($con,"SELECT * FROM video WHERE vcode='".$vcode."' ");
 		while($ro = mysqli_fetch_array($result1))
 			{
 			

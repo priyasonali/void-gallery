@@ -39,7 +39,7 @@ echo '<h1>'.$cname.' <a class="editCollection" title="Edit Collection" data-cid=
 </section>
 
 <section class="container standaloneView">
-	<div class="row">
+	<div class="row hideFlow">
 		<blockquote>
 		'.$cdesc.'
 		</blockquote>

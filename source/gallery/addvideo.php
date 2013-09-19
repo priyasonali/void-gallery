@@ -1,16 +1,25 @@
 <?php
+
+require "dbconnect.php";
 if( !empty($_REQUEST{'cid'} ) )
 	{
 		$cid = $_REQUEST['cid'];
 	}
-
+$check=0;
 //Checking for tampered link
-
+$result2 = mysqli_query($con,"SELECT * FROM collection WHERE cid=".$cid." ");
+while($row2 = mysqli_fetch_array($result2))
+	{
+		$cname = $row2['cname']; 
+		$check=1;
+	}
+if($cid<1 || !is_numeric($cid) || $check==0)	
+echo '<script>window.location.assign("?p=error1");</script>';
 ?>
 
 <section class="container">
 	<div class="page-header">
-		<h1>Add video to <span class="text-info">Trailers</span></h1>
+		<h1>Add video to <span class="text-info"><?php echo $cname; ?></span></h1>
 	</div>
 </section>
 
