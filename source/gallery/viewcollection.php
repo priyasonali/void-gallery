@@ -34,7 +34,7 @@ $result = mysqli_query($con,"SELECT * FROM collection WHERE cid=$cid ");
 				$check=1;
 			}
 if($check==0 || !is_numeric($cid))	echo '<script>window.location.assign("?p=error1");</script>';
-echo '<h1>'.$cname.' <a class="addCollection" title="Edit Collection"  href="#"><span class="glyphicon glyphicon-edit"></span></a></h1>
+echo '<h1>'.$cname.' <a class="editCollection" title="Edit Collection" data-cid="'.$cid.'" data-cstatus="'.$cstatus.'" data-cname="'.$cname.'" data-cdesc="'.$cdesc.'" href="#"><span class="glyphicon glyphicon-edit"></span></a></h1>
 	</div>
 </section>
 
