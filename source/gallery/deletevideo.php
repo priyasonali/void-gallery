@@ -1,6 +1,8 @@
 <?php
 require 'dbconnect.php';
 
+if(!empty($_POST["vid"]))
+{
 $vid=mysqli_real_escape_string($con,$_POST['vid']);
 $chk=0;
 
@@ -23,4 +25,8 @@ if($chk == 0)
 echo "end";
 else
 echo "done";
+}
+else
+echo "<script>window.location.assign('../?p=error6');</script>";
+
 ?>

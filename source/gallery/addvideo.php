@@ -1,4 +1,7 @@
 <?php
+if(!defined('socket')) {
+echo "<script>window.location.assign('../?p=error6');</script>";
+}
 
 require "dbconnect.php";
 if( !empty($_REQUEST['cid'] ) )

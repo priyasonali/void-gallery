@@ -1,5 +1,6 @@
 <?php
-
+if(!empty($_POST["picsrc"]) || !empty($_POST["cid"]))
+{
 $targ_w = $targ_h = 200;
 $jpeg_quality = 90;
 
@@ -33,4 +34,9 @@ echo "
 		  <h3 class='alertHead'></h3><p class='alertBody'></p>.
 	  </div>
 ";
+}
+else
+echo "<script>window.location.assign('../?p=error6');</script>";
+
+mysqli_close($con);
 ?>

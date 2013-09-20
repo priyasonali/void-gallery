@@ -1,4 +1,7 @@
 <?php
+if(!defined('socket')) {
+echo "<script>window.location.assign('../?p=error6');</script>";
+}
 
 function parseInt($string) {
 if(preg_match('/(\d+)/', $string, $array)) {
@@ -27,7 +30,11 @@ $msglist = array(
 					<a href="?p=initcollection" class="alert-link">Click here</a> to re-initialize.',
 					'<strong>Void Gallery [<em>Error Code: 3</em>]: </strong>This video gallery is empty.
 					<a href="?p=initcollection" class="alert-link">Click here</a> to re-initialize.',
-					'<strong>Void Gallery [<em>Error Code: 4</em>]: </strong>Upload Handler failed to start.'
+					'<strong>Void Gallery [<em>Error Code: 4</em>]: </strong>Upload Handler failed to start.',
+					'<strong>Void Gallery [<em>Error Code: 5</em>]: </strong>Unable to authenticate Admin session. Access Denied.
+					<a href="?p=initcollection" class="alert-link">Click here</a> to re-initialize.',
+					'<strong>Void Gallery [<em>Error Code: 6</em>]: </strong>Direct access to this script is forbidden.
+					<a href="?p=initcollection" class="alert-link">Click here</a> to re-initialize.'
 				);
 
 function showmsg($msg)

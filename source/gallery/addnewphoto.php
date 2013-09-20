@@ -1,7 +1,8 @@
 <?php
 require 'dbconnect.php';
 
-
+if(!empty($_POST["cid"]) || !empty($_POST["pname"]) || !empty($_POST["pdesc"]) || !empty($_POST["pcode"]))
+{
 $cid = mysqli_real_escape_string($con,$_POST["cid"]);
 $pname = mysqli_real_escape_string($con,$_POST["pname"]);
 $pdesc =  mysqli_real_escape_string($con,$_POST["pdesc"]); 
@@ -54,5 +55,9 @@ else
 		
 		echo "done";
 	}
+}
+else
+echo "<script>window.location.assign('../?p=error6');</script>";
+
 mysqli_close($con);
 ?>

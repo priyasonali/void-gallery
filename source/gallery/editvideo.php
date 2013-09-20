@@ -2,6 +2,8 @@
 
 require 'dbconnect.php';
 
+if(!empty($_POST["vid"]) || !empty($_POST["vname"]) || !empty($_POST["vdesc"]) || !empty($_POST["vstatus"]))
+{
 $vid = mysqli_real_escape_string($con,$_POST["vid"]);
 $vname = mysqli_real_escape_string($con,$_POST["vname"]);
 $vdesc = mysqli_real_escape_string($con,$_POST["vdesc"]); 
@@ -51,9 +53,9 @@ $check1= mysqli_query($con,"UPDATE collection SET cdate='".$date."' WHERE cid=".
 echo "done";
 
 }
-
-
-
+}
+else
+echo "<script>window.location.assign('../?p=error6');</script>";
 mysqli_close($con);
 
 

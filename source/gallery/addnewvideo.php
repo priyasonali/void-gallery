@@ -2,7 +2,8 @@
 
 require 'dbconnect.php';
 
-
+if(!empty($_POST["cid"]) || !empty($_POST["vname"]) || !empty($_POST["vdesc"]) || !empty($_POST["vcode"]))
+{
 $cid = mysqli_real_escape_string($con,$_POST["cid"]);
 $vname = mysqli_real_escape_string($con,$_POST["vname"]);
 $vdesc =  mysqli_real_escape_string($con,$_POST["vdesc"]); 
@@ -44,5 +45,9 @@ else
 		$check4 = mysqli_query($con,"INSERT INTO assign(cid,vid) VALUES (".$cid.",".$vid.")");
 		echo "done";
 	}
+}
+else
+echo "<script>window.location.assign('../?p=error6');</script>";
+
 mysqli_close($con);
 ?>
