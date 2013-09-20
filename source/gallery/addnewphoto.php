@@ -7,7 +7,7 @@ $pname = mysqli_real_escape_string($con,$_POST["pname"]);
 $pdesc =  mysqli_real_escape_string($con,$_POST["pdesc"]); 
 $pcode =  mysqli_real_escape_string($con,$_POST["pcode"]); 
 
-$vdate = date("d/m/y"); 
+$pdate = date("d/m/y"); 
 $deny=0;
 
 /*

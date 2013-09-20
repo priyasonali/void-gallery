@@ -8,6 +8,7 @@ $(function(){
 //declaring variables
 //===================
 $alphaNumericPattern = /^[0-9A-Za-z\s]+$/;
+$globalcid = 0;
 
 //===============================
 //declaring functions and plugins
@@ -64,11 +65,11 @@ $('.fancybox-media').fancybox({
 
 //initializing blueimp jquery-ajax-upload for file uploads
 $('#itemUpload').fileupload({
-		var cid = $(this).attr('data-cid');
-		formData: {cid: cid},
         dataType: 'html',
 		add: function (e, data) {
-            $(this).hide();
+            globalcid = $('#itemUpload').attr('data-cid');
+			
+			$('.lateHide').hide();
             data.submit();
         },
 		progressall: function (e, data) {
@@ -79,42 +80,122 @@ $('#itemUpload').fileupload({
 			);
 		},
         done: function (e, data) {
-			$('.photoUpload .row:first-child').html(data.result);
-			//initializing jcrop
-			$('#cropbox').Jcrop({
-				aspectRatio: 1,
-				onSelect: updateCoords
-			});
-
-			$('.uploadSubmit').on("click",function(){
-				imgsrc=$("#picsrc").val();
-				x = $("#x").val();
-				y = $("#y").val();
-				w = $("#w").val();
-				h = $("#h").val();
-				if(x=="")
+			$('.photoUpload .row:first-child .col-md-12').html(data.result,
+				function()
 				{
-				alert("Please make a selection to crop.");
-				}
-				else{
-				$(this).attr("disabled","disabled").text("Cropping Photo..");
-				$.post("gallery/crop.php",
-				{
-				x:x,
-				y:y,
-				w:w,
-				h:h,
-				picsrc:imgsrc
-				},function(data,status){
-				$('.photoUpload .row:first-child').html(data);
-				/*
-				setTimeout(function(){
-				window.location.assign("#");
-				},3000);
-				*/
-
+				
+				$('#cid').val(globalcid);
+						
+				//initializing jcrop
+				$('#cropbox').Jcrop({
+					aspectRatio: 1,
+					onSelect: updateCoords
 				});
-				}
+
+				$('.uploadSubmit').on("click",function(){
+					imgsrc=$("#picsrc").val();
+					x = $("#x").val();
+					y = $("#y").val();
+					w = $("#w").val();
+					h = $("#h").val();
+					cid = $("#cid").val();
+					if(x=="")
+					{
+					alert("Please make a selection to crop.");
+					}
+					else{
+					$(this).attr("disabled","disabled").text("Cropping Photo..");
+					$.post("gallery/crop.php",
+					{
+					x:x,
+					y:y,
+					w:w,
+					h:h,
+					cid:cid,
+					picsrc:imgsrc
+					},function(data,status){
+					$('.photoUpload .row:first-child .col-md-12').html(data,
+					function(){
+						$(".systemAlert").hide();
+						$(".hideBtn").on("click",
+						function()
+						{
+							$(".systemAlert").hide();
+						});
+						$(".addPhotoBtn").on("click",function() {
+						var pname = $("#photoName").val();
+						var pdesc = $("#photoDesc").val();
+						var cid = $(this).attr('data-cid');
+						var pcode = $(this).attr('data-pcode');
+						//validation
+						if(pname == 0 || pdesc == 0)
+						{
+							$(".systemAlert .alertHead").text("Empty Field");
+							$(".systemAlert .alertBody").html("Both <em>Name</em> and <em>Description</em> of your new photo are required.");
+							$(".systemAlert").removeClass("alert-success").addClass("alert-danger").show();
+						}
+						else if(pname.length > 20)
+						{
+							$(".systemAlert .alertHead").text("Invalid Name Length");
+							$(".systemAlert .alertBody").html("<em>Name</em> can be max. 20 characters in length.");
+							$(".systemAlert").removeClass("alert-success").addClass("alert-danger").show();
+						}
+						else if(pdesc.length > 140)
+						{
+							$(".systemAlert .alertHead").text("Invalid Description Length");
+							$(".systemAlert .alertBody").html("<em>Description</em> can be max. 140 characters in length.");
+							$(".systemAlert").removeClass("alert-success").addClass("alert-danger").show();
+						}
+						else if(!pname.match($alphaNumericPattern))
+						{
+							$(".systemAlert .alertHead").text("Invalid Input");
+							$(".systemAlert .alertBody").html("<em>Name</em> must be alphanumeric. No special characters or symbols allowed.");
+							$(".systemAlert").removeClass("alert-success").addClass("alert-danger").show();
+						}
+						else
+						{
+							$(".addPhotoBtn").attr('disabled','disabled');
+							$(".systemAlert .alertHead").html("Processing");
+							$(".systemAlert .alertBody").html("Please wait...");
+							$(".systemAlert").removeClass("alert-danger").addClass("alert-success").show();
+							$.post('gallery/addnewphoto.php',
+							{
+								cid:cid,
+								pname:pname,
+								pdesc:pdesc,
+								pcode:pcode
+							},
+							function(data,status){
+								if(data == "exists")
+								{
+									$(".systemAlert .alertHead").text("Invalid Name");
+									$(".systemAlert .alertBody").html("A photo with <em>Name</em>: <em>"+pname+"</em> already exists ! Try again with a different <em>Name</em>.");
+									$(".systemAlert").removeClass("alert-success").addClass("alert-danger").show();
+									$(".addPhotoBtn").removeAttr('disabled');
+								}
+								else if(data == "done")
+								{
+									$(".systemAlert .alertHead").html("Photo Added !");
+									$(".systemAlert .alertBody").html("A photo with <em>Name</em>: <em>"+pname+"</em> has been successfully added. Now redirecting...");
+									$(".systemAlert").removeClass("alert-danger").addClass("alert-success").show();
+									setTimeout(function(){window.location.assign("?p=initphoto&cid="+cid)},1000);
+								}
+								else
+								{
+									$(".systemAlert .alertHead").html("Unexpected Error");
+									$(".systemAlert .alertBody").html("An unexpected error has occurred which the Gallery Controller could not handle.\
+									Please retry or contact the administrator.");
+									$(".systemAlert").removeClass("alert-success").addClass("alert-danger").show();
+									$(".addPhotoBtn").removeAttr('disabled');
+								}
+							});
+						}
+						});
+					});
+					
+					});
+					}
+				});
 			});
 		},
     });

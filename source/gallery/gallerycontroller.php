@@ -24,7 +24,8 @@ $msglist = array(
 					'<strong>Void Gallery [<em>Error Code: 1</em>]: </strong>Tampered/Broken link detected ! Unable to traverse.
 				  <a href="?p=initcollection" class="alert-link">Click here</a> to re-initialize.',
 					'<strong>Void Gallery [<em>Error Code: 2</em>]: </strong>This photo gallery is empty.',
-					'<strong>Void Gallery [<em>Error Code: 3</em>]: </strong>This video gallery is empty.'
+					'<strong>Void Gallery [<em>Error Code: 3</em>]: </strong>This video gallery is empty.',
+					'<strong>Void Gallery [<em>Error Code: 4</em>]: </strong>Upload Handler failed to start.'
 				);
 
 function showmsg($msg)
