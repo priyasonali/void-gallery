@@ -539,11 +539,11 @@ $(".editVideo").on("click",function(e) {
 	<form role='form'>\
 		  <div class='form-group'>\
 			<label for='videoName'>Name</label>\
-			<input type='text' class='form-control' id='videoName' value='"+vname+"' placeholder='Collection Name'>\
+			<input type='text' class='form-control' id='videoName' value='"+vname+"' placeholder='Video Name'>\
 		  </div>\
 		  <div class='form-group'>\
 			<label for='collectionDesc'>Description</label>\
-			<textarea class='form-control' id='videoDesc' rows='5' placeholder='Collection Description'>"+vdesc+"</textarea>\
+			<textarea class='form-control' id='videoDesc' rows='5' placeholder='Video Description'>"+vdesc+"</textarea>\
 		  </div>"+appendCode+"\
 	  </form>\
 	  <div class='alert alert-dismissable systemModalAlert'>\
@@ -572,8 +572,8 @@ $(".editVideo").on("click",function(e) {
 	function()
 	{
 		$(".editVideoBtn").on("click",function() {
-			cname = $("#videoName").val();
-			cdesc = $("#videoDesc").val();
+			vname = $("#videoName").val();
+			vdesc = $("#videoDesc").val();
 			//validation
 			if(vname == 0 || vdesc == 0)
 			{
