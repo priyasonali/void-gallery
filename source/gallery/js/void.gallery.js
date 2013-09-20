@@ -731,6 +731,7 @@ $(".editVideo").on("click",function(e) {
 $(".deleteVideo").on("click",function(e) {
 	e.preventDefault();
 	var vid = $(this).attr("data-vid");
+	var cid = $(this).attr("data-cid");
 	$("#systemModal .modal-title").text("Delete Video");
 	$("#systemModal .modal-body").html("<p class='text-danger lead'>Are you sure ?</p><p class='text-danger'>Deleting \
 	this video will not only remove it from this collection but also permanently discard it !</p>");
@@ -754,6 +755,11 @@ $(".deleteVideo").on("click",function(e) {
 					{
 						$("#systemModal .modal-body").html("<p class='text-success'>Your video has been deleted successfully. Standby for reload...</p>");
 						setTimeout(function(){window.location.reload()},1000);
+					}
+					else if(data == "end")
+					{
+						$("#systemModal .modal-body").html("<p class='text-success'>Your video has been deleted successfully. Looks like that was the last one. Redirecting back to collection...</p>");
+						setTimeout(function(){window.location.assign("?p=viewcollection&cid="+cid)},1000);
 					}
 					else
 					{
