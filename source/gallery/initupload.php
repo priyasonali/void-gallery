@@ -1,23 +1,29 @@
 <?php
-		require 'dbconnect.php';
-		$chk=0;
-		
-		if(!empty($_REQUEST['cid']))
-		{
-			$cid = $_REQUEST['cid'];
-		}
-		else
-		{
-			echo '<script>window.location.assign("?p=error1");</script>';
-		}
-		
-		$result1 = mysqli_query($con,"SELECT * FROM collection WHERE cid=".$cid." ");
-		while($ro = mysqli_fetch_array($result1))
-			{			
-				$cname = $ro['cname'];
-				$chk=1;
-			}
-		if($cid<1 || !is_numeric($cid) || $chk == 0)	echo '<script>window.location.assign("?p=error1");</script>';
+if(!defined('socket')) {
+echo "<script>window.location.assign('../?p=error6');</script>";
+}
+?>
+<?php
+
+require 'dbconnect.php';
+$chk=0;
+
+if(!empty($_REQUEST['cid']))
+{
+	$cid = $_REQUEST['cid'];
+}
+else
+{
+	echo '<script>window.location.assign("?p=error1");</script>';
+}
+
+$result1 = mysqli_query($con,"SELECT * FROM collection WHERE cid=".$cid." ");
+while($ro = mysqli_fetch_array($result1))
+	{			
+		$cname = $ro['cname'];
+		$chk=1;
+	}
+if($cid<1 || !is_numeric($cid) || $chk == 0)	echo '<script>window.location.assign("?p=error1");</script>';
 
 echo '
 	<section class="container">

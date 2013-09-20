@@ -1,5 +1,7 @@
 <?php
 
+if(!empty($_FILES["item"]["name"]))
+{
 $allowedExt = "jpg";
 $temp = explode(".", $_FILES["item"]["name"]);
 $extension = end($temp);
@@ -35,4 +37,8 @@ to create its thumbnail.
 </section>
 ';
 }
+}
+else
+echo "<script>window.location.assign('../?p=error6');</script>";
+
 ?>

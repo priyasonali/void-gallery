@@ -1,3 +1,8 @@
+<?php
+if(!defined('socket')) {
+echo "<script>window.location.assign('../?p=error6');</script>";
+}
+?>
 <section class="container">
 	<div class="page-header">
 <?php

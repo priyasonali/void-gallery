@@ -11,7 +11,7 @@
 		$view++;
 	mysqli_query($con,"UPDATE photo SET pview=".$view." WHERE pid=".$pid."");
 	}
-	else
+	else if(!empty($_POST["vid"]))
 	{
 	$vid = mysqli_real_escape_string($con,$_POST["vid"]);
 		$result1=mysqli_query($con,"SELECT * FROM video WHERE vid=".$vid."");
@@ -22,6 +22,8 @@
 		$vview++;
 	mysqli_query($con,"UPDATE video SET vview=".$vview." WHERE vid=".$vid."");
 	}
+	else
+	echo "<script>window.location.assign('../?p=error6');</script>";
 
 mysqli_close($con);
 ?>

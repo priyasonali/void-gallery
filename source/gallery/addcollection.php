@@ -3,6 +3,8 @@
 /* Including Database Connection File */
 require 'dbconnect.php';
 
+if(!empty($_POST["cname"]) || !empty($_POST["cdesc"]))
+{
 /* Getting all values */
 $cname = mysqli_real_escape_string($con,$_POST["cname"]);
 $cdesc =  mysqli_real_escape_string($con,$_POST["cdesc"]); 
@@ -38,7 +40,9 @@ echo "done";
 
 
 }
-
+}
+else
+echo "<script>window.location.assign('../?p=error6');</script>";
 
 mysqli_close($con);
 

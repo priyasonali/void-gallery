@@ -1,6 +1,8 @@
 <?php
 require 'dbconnect.php';
 
+if(!empty($_POST["pid"]))
+{
 $chk = 0;
 $pid=mysqli_real_escape_string($con,$_POST['pid']);
 
@@ -29,4 +31,9 @@ if($chk == 0)
 echo "end";
 else
 echo "done";
+}
+else
+echo "<script>window.location.assign('../?p=error6');</script>";
+
+mysqli_close($con);
 ?>

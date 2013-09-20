@@ -2,6 +2,8 @@
 
 require 'dbconnect.php';
 
+if(!empty($_POST["pid"]) || !empty($_POST["pname"]) || !empty($_POST["pdesc"]) || !empty($_POST["pstatus"]))
+{
 $cid = mysqli_real_escape_string($con,$_POST["cid"]);
 $cname = mysqli_real_escape_string($con,$_POST["cname"]);
 $cdesc = mysqli_real_escape_string($con,$_POST["cdesc"]); 
@@ -41,9 +43,10 @@ else
 $check= mysqli_query($con,"UPDATE collection SET cname='".$cname."', cdesc='".$cdesc."', cdate='".$date."', cstatus=".$cstatus." WHERE cid=".$cid."");
 echo "done";
 
-
 }
-
+}
+else
+echo "<script>window.location.assign('../?p=error6');</script>";
 
 mysqli_close($con);
 
