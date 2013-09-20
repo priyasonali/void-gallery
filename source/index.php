@@ -1,4 +1,5 @@
 <?php
+session_start();
 /*
 Default theme can be set here.
 If not set, the default theme will fallback to "light".
