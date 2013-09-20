@@ -33,15 +33,15 @@ if($deny>=1)
 	}
 else
 	{
-		$check= mysqli_query($con,"INSERT INTO video (vcode, vname, vdesc, vdate) VALUES ('".$vcode."','".$vname."','".$vdesc."', '".$vdate."')");
-		$check1= mysqli_query($con,"UPDATE collection SET cdate='".$vdate."' WHERE cid=".$cid."");
-		$result1 = mysqli_query($con,"SELECT * FROM video WHERE vcode='".$vcode."' ");
-		while($ro = mysqli_fetch_array($result1))
+		$check1= mysqli_query($con,"INSERT INTO video (vcode, vname, vdesc, vdate) VALUES ('".$vcode."','".$vname."','".$vdesc."', '".$vdate."')");
+		$check2= mysqli_query($con,"UPDATE collection SET cdate='".$vdate."' WHERE cid=".$cid."");
+		$check3 = mysqli_query($con,"SELECT * FROM video WHERE vcode='".$vcode."' ");
+		while($ro = mysqli_fetch_array($check3))
 			{
 			
 			$vid = $ro['vid'];
 			}
-		mysqli_query($con,"INSERT INTO assign(cid,vid) VALUES (".$cid.",".$vid.")");
+		$check4 = mysqli_query($con,"INSERT INTO assign(cid,vid) VALUES (".$cid.",".$vid.")");
 		echo "done";
 	}
 mysqli_close($con);

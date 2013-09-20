@@ -63,7 +63,7 @@ $('.fancybox-media').fancybox({
 	});
 
 
-//initializing blueimp jquery-ajax-upload for file uploads
+//initializing blueimp jquery-ajax-upload for photo uploads
 $('#itemUpload').fileupload({
         dataType: 'html',
 		add: function (e, data) {
@@ -88,6 +88,8 @@ $('#itemUpload').fileupload({
 						
 				//initializing jcrop
 				$('#cropbox').Jcrop({
+					boxWidth: 600, 
+					boxHeight: 600,
 					aspectRatio: 1,
 					onSelect: updateCoords
 				});
@@ -905,6 +907,7 @@ $(".editPhoto").on("click",function(e) {
 $(".deletePhoto").on("click",function(e) {
 	e.preventDefault();
 	var pid = $(this).attr("data-pid");
+	var cid = $(this).attr("data-cid");
 	$("#systemModal .modal-title").text("Delete Photo");
 	$("#systemModal .modal-body").html("<p class='text-danger lead'>Are you sure ?</p><p class='text-danger'>Deleting \
 	this photo will not only remove it from this collection but also permanently discard it !</p>");
@@ -929,11 +932,16 @@ $(".deletePhoto").on("click",function(e) {
 						$("#systemModal .modal-body").html("<p class='text-success'>Your photo has been deleted successfully. Standby for reload...</p>");
 						setTimeout(function(){window.location.reload()},1000);
 					}
+					else if(data == "end")
+					{
+						$("#systemModal .modal-body").html("<p class='text-success'>Your photo has been deleted successfully. Looks like that was the last one. Redirecting back to collection...</p>");
+						setTimeout(function(){window.location.assign("?p=viewcollection&cid="+cid)},1000);
+					}
 					else
 					{
 						$("#systemModal .modal-title").html("<h3 class='text-danger'>Unexpected Error</h3>");
 						$("#systemModal .modal-body").html("<p class='text-danger'>An unexpected error has occurred which the Gallery Controller could not handle.\
-						Please retry or contact the administrator.</p>");
+						Please retry or contact the administrator.</p><br><p class='text-info'>"+data+"</p>");
 						$("#systemModal .modal-footer").html("<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>");
 					}
 				});

@@ -31,7 +31,7 @@ Now,
 to create its thumbnail.
 </form>
 
-<img class="col-md-12" src="gallery/uploads/photos/'.$fname.'" id="cropbox" />
+<img src="gallery/uploads/photos/'.$fname.'" id="cropbox" />
 </section>
 ';
 }
