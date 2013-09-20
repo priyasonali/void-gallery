@@ -625,7 +625,7 @@ $(".editVideo").on("click",function(e) {
 			<input type='text' class='form-control' id='videoName' value='"+vname+"' placeholder='Video Name'>\
 		  </div>\
 		  <div class='form-group'>\
-			<label for='collectionDesc'>Description</label>\
+		  <label for='videoDesc'>Description</label>\
 			<textarea class='form-control' id='videoDesc' rows='5' placeholder='Video Description'>"+vdesc+"</textarea>\
 		  </div>"+appendCode+"\
 	  </form>\
@@ -725,7 +725,7 @@ $(".editVideo").on("click",function(e) {
 	$("#systemModal").modal();
 });
 
-//delete collection
+//delete video
 $(".deleteVideo").on("click",function(e) {
 	e.preventDefault();
 	var vid = $(this).attr("data-vid");
@@ -741,7 +741,7 @@ $(".deleteVideo").on("click",function(e) {
 	{
 		$(".deleteVideoBtn").on("click",function(){
 			$(".deleteDialogCloseBtn").attr('disabled','disabled');
-			$(".deleteCollectionBtn").attr('disabled','disabled');
+			$(".deleteVideoBtn").attr('disabled','disabled');
 			$.post('gallery/deletevideo.php',
 				{
 					vid:vid,					
@@ -751,6 +751,182 @@ $(".deleteVideo").on("click",function(e) {
 					if(data == "done")
 					{
 						$("#systemModal .modal-body").html("<p class='text-success'>Your video has been deleted successfully. Standby for reload...</p>");
+						setTimeout(function(){window.location.reload()},1000);
+					}
+					else
+					{
+						$("#systemModal .modal-title").html("<h3 class='text-danger'>Unexpected Error</h3>");
+						$("#systemModal .modal-body").html("<p class='text-danger'>An unexpected error has occurred which the Gallery Controller could not handle.\
+						Please retry or contact the administrator.</p>");
+						$("#systemModal .modal-footer").html("<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>");
+					}
+				});
+		});	
+	});
+	
+	$("#systemModal").modal();
+});
+
+
+//edit photo
+$(".editPhoto").on("click",function(e) {
+	e.preventDefault();
+	var pname = $(this).attr("data-pname");
+	var pdesc = $(this).attr("data-pdesc");
+	var pstatus = $(this).attr("data-pstatus");
+	var pid = $(this).attr("data-pid");
+	if(pstatus == 1)
+	{
+		var appendCode = "\
+			<div class='form-group'>\
+				<label for='statusIndicator'>Status </label>\
+				<input type='radio' class='statusIndicator' name='statusIndicator' value='1' checked> Visible\
+				<input type='radio' class='statusIndicator' name='statusIndicator' value='0'> Hidden\
+			 </div>";
+	}
+	else
+	{
+		var appendCode = "\
+			<div class='form-group'>\
+				<label for='statusIndicator'>Status</label>\
+				<input type='radio' class='statusIndicator' name='statusIndicator' value='1'> Visible\
+				<input type='radio' class='statusIndicator' name='statusIndicator' value='0' checked> Hidden\
+			 </div>";
+	}
+	$("#systemModal .modal-title").text("Edit Photo");
+	$("#systemModal .modal-body").html("\
+	<form role='form'>\
+		  <div class='form-group'>\
+			<label for='photoName'>Name</label>\
+			<input type='text' class='form-control' id='photoName' value='"+pname+"' placeholder='Photo Name'>\
+		  </div>\
+		  <div class='form-group'>\
+			<label for='photoDesc'>Description</label>\
+			<textarea class='form-control' id='photoDesc' rows='5' placeholder='Photo Description'>"+pdesc+"</textarea>\
+		  </div>"+appendCode+"\
+	  </form>\
+	  <div class='alert alert-dismissable systemModalAlert'>\
+		  <button type='button' class='close hideBtn'>&times;</button>\
+		  <h3 class='alertHead'></h3><p class='alertBody'></p>.\
+	  </div>\
+	", 
+	function()
+	{
+		$(".systemModalAlert").hide();
+		$(".statusIndicator").on("click",
+		function()
+		{	
+			pstatus = $(this).val();
+		});
+		$(".hideBtn").on("click",
+		function()
+		{
+			$(".systemModalAlert").hide();
+		});
+	});
+	
+	$("#systemModal .modal-footer").html("\
+		<button type='button' class='btn btn-primary editPhotoBtn'>Update</button>\
+	",
+	function()
+	{
+		$(".editPhotoBtn").on("click",function() {
+			pname = $("#photoName").val();
+			pdesc = $("#photoDesc").val();
+			//validation
+			if(pname == 0 || pdesc == 0)
+			{
+				$(".systemModalAlert .alertHead").text("Empty Field");
+				$(".systemModalAlert .alertBody").html("Both <em>Name</em> and <em>Description</em> of your photo are required.");
+				$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
+			}
+			else if(pname.length > 20)
+			{
+				$(".systemModalAlert .alertHead").text("Invalid Name Length");
+				$(".systemModalAlert .alertBody").html("<em>Name</em> can be max. 20 characters in length.");
+				$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
+			}
+			else if(pdesc.length > 140)
+			{
+				$(".systemModalAlert .alertHead").text("Invalid Description Length");
+				$(".systemModalAlert .alertBody").html("<em>Description</em> can be max. 140 characters in length.");
+				$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
+			}
+			else if(!pname.match($alphaNumericPattern))
+			{
+				$(".systemModalAlert .alertHead").text("Invalid Input");
+				$(".systemModalAlert .alertBody").html("<em>Name</em> must be alphanumeric. No special characters or symbols allowed.");
+				$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
+			}
+			else
+			{
+				$(".editPhotoBtn").attr('disabled','disabled');
+				$(".systemModalAlert .alertHead").html("Processing");
+				$(".systemModalAlert .alertBody").html("Please wait...");
+				$(".systemModalAlert").removeClass("alert-danger").addClass("alert-success").show();
+				$.post('gallery/editphoto.php',
+				{
+					pid:pid,
+					pname:pname,
+					pdesc:pdesc,
+					pstatus:pstatus					
+				},
+				function(data,status){
+					if(data == "exists")
+					{
+						$(".systemModalAlert .alertHead").text("Invalid Name");
+						$(".systemModalAlert .alertBody").html("A photo with <em>Name</em>: <em>"+vname+"</em> already exists ! Try again with a different <em>Name</em>.");
+						$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
+						$(".editPhotoBtn").removeAttr('disabled');
+					}
+					else if(data == "done")
+					{
+						$(".systemModalAlert .alertHead").html("Photo Updated !");
+						$(".systemModalAlert .alertBody").html("Your photo has been successfully updated. Now reloading...");
+						$(".systemModalAlert").removeClass("alert-danger").addClass("alert-success").show();
+						setTimeout(function(){window.location.reload("")},1000);
+					}
+					else
+					{
+						$(".systemModalAlert .alertHead").html("Unexpected Error");
+						$(".systemModalAlert .alertBody").html("An unexpected error has occurred which the Gallery Controller could not handle.\
+						Please retry or contact the administrator.");
+						$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
+						$(".editPhotoBtn").removeAttr('disabled');
+					}
+				});
+			}
+		});
+	});
+	$("#systemModal").modal();
+});
+
+//delete photo
+$(".deletePhoto").on("click",function(e) {
+	e.preventDefault();
+	var pid = $(this).attr("data-pid");
+	$("#systemModal .modal-title").text("Delete Photo");
+	$("#systemModal .modal-body").html("<p class='text-danger lead'>Are you sure ?</p><p class='text-danger'>Deleting \
+	this photo will not only remove it from this collection but also permanently discard it !</p>");
+	
+	$("#systemModal .modal-footer").html("\
+		<button type='button' class='btn btn-default deleteDialogCloseBtn' data-dismiss='modal'>No</button>\
+		<button type='button' class='btn btn-danger deletePhotoBtn'>Yes</button>\
+	",
+	function()
+	{
+		$(".deletePhotoBtn").on("click",function(){
+			$(".deleteDialogCloseBtn").attr('disabled','disabled');
+			$(".deletePhotoBtn").attr('disabled','disabled');
+			$.post('gallery/deletephoto.php',
+				{
+					pid:pid,					
+				},
+				function(data,status)
+				{
+					if(data == "done")
+					{
+						$("#systemModal .modal-body").html("<p class='text-success'>Your photo has been deleted successfully. Standby for reload...</p>");
 						setTimeout(function(){window.location.reload()},1000);
 					}
 					else
