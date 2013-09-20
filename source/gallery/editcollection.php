@@ -2,7 +2,7 @@
 
 require 'dbconnect.php';
 
-if(!empty($_POST["pid"]) || !empty($_POST["pname"]) || !empty($_POST["pdesc"]) || !empty($_POST["pstatus"]))
+if(!empty($_POST["cid"]) || !empty($_POST["cname"]) || !empty($_POST["cdesc"]) || !empty($_POST["cstatus"]))
 {
 $cid = mysqli_real_escape_string($con,$_POST["cid"]);
 $cname = mysqli_real_escape_string($con,$_POST["cname"]);

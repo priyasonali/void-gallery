@@ -38,5 +38,4 @@ echo "
 else
 echo "<script>window.location.assign('../?p=error6');</script>";
 
-mysqli_close($con);
 ?>
