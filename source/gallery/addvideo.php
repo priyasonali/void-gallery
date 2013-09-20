@@ -1,7 +1,7 @@
 <?php
 
 require "dbconnect.php";
-if( !empty($_REQUEST{'cid'} ) )
+if( !empty($_REQUEST['cid'] ) )
 	{
 		$cid = $_REQUEST['cid'];
 	}
@@ -15,13 +15,15 @@ while($row2 = mysqli_fetch_array($result2))
 	}
 if($cid<1 || !is_numeric($cid) || $check==0)	
 echo '<script>window.location.assign("?p=error1");</script>';
-?>
 
-<section class="container">
-	<div class="page-header">
-		<h1>Add video to <span class="text-info"><?php echo $cname; ?></span></h1>
-	</div>
-</section>
+echo '
+	<section class="container">
+		<div class="page-header">
+			<h1>Add video to <a href="?p=viewcollection&cid='.$cid.'">'.$cname.'</a></h1>
+		</div>
+	</section>
+';
+?>
 
 <section class="container photoUpload">
 <div class="row">

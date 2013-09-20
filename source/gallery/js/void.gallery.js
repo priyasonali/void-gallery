@@ -64,6 +64,8 @@ $('.fancybox-media').fancybox({
 
 //initializing blueimp jquery-ajax-upload for file uploads
 $('#itemUpload').fileupload({
+		var cid = $(this).attr('data-cid');
+		formData: {cid: cid},
         dataType: 'html',
 		add: function (e, data) {
             $(this).hide();
