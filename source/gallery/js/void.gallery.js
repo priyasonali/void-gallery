@@ -951,6 +951,26 @@ $(".deletePhoto").on("click",function(e) {
 	$("#systemModal").modal();
 });
 
+//update photo views
+$(".fancybox").on("click",function(){
+	var pid = $(this).attr('data-pid');
+	$.post('gallery/updateview.php',
+			{
+				pid : pid
+			},
+			function(data,status){});
+});
+
+//update video views
+$(".fancybox-media").on("click",function(){
+	var vid = $(this).attr('data-vid');
+	$.post('gallery/updateview.php',
+			{
+				vid : vid
+			},
+			function(data,status){});
+});
+
 
 //styling helper
 $(".collectionView .panel, .photoView .panel, .videoView .panel").on("mouseover",function() {
