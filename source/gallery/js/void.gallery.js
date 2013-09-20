@@ -391,12 +391,13 @@ $(".deleteCollection").on("click",function(e) {
 	this collection will delete all its contents including added photos and videos !</p>");
 	
 	$("#systemModal .modal-footer").html("\
-		<button type='button' class='btn btn-default' data-dismiss='modal'>No</button>\
+		<button type='button' class='btn btn-default deleteDialogCloseBtn' data-dismiss='modal'>No</button>\
 		<button type='button' class='btn btn-danger deleteCollectionBtn'>Yes</button>\
 	",
 	function()
 	{
 		$(".deleteCollectionBtn").on("click",function(){
+			$(".deleteDialogCloseBtn").attr('disabled','disabled');
 			$(".deleteCollectionBtn").attr('disabled','disabled');
 			$.post('gallery/deletecollection.php',
 				{
@@ -506,6 +507,181 @@ $(".addVideoBtn").on("click",
 				});
 			}
 	
+});
+
+//edit video
+$(".editVideo").on("click",function(e) {
+	e.preventDefault();
+	var vname = $(this).attr("data-vname");
+	var vdesc = $(this).attr("data-vdesc");
+	var vstatus = $(this).attr("data-vstatus");
+	var vid = $(this).attr("data-vid");
+	if(vstatus == 1)
+	{
+		var appendCode = "\
+			<div class='form-group'>\
+				<label for='statusIndicator'>Status </label>\
+				<input type='radio' class='statusIndicator' name='statusIndicator' value='1' checked> Visible\
+				<input type='radio' class='statusIndicator' name='statusIndicator' value='0'> Hidden\
+			 </div>";
+	}
+	else
+	{
+		var appendCode = "\
+			<div class='form-group'>\
+				<label for='statusIndicator'>Status</label>\
+				<input type='radio' class='statusIndicator' name='statusIndicator' value='1'> Visible\
+				<input type='radio' class='statusIndicator' name='statusIndicator' value='0' checked> Hidden\
+			 </div>";
+	}
+	$("#systemModal .modal-title").text("Edit Video");
+	$("#systemModal .modal-body").html("\
+	<form role='form'>\
+		  <div class='form-group'>\
+			<label for='videoName'>Name</label>\
+			<input type='text' class='form-control' id='videoName' value='"+vname+"' placeholder='Collection Name'>\
+		  </div>\
+		  <div class='form-group'>\
+			<label for='collectionDesc'>Description</label>\
+			<textarea class='form-control' id='videoDesc' rows='5' placeholder='Collection Description'>"+vdesc+"</textarea>\
+		  </div>"+appendCode+"\
+	  </form>\
+	  <div class='alert alert-dismissable systemModalAlert'>\
+		  <button type='button' class='close hideBtn'>&times;</button>\
+		  <h3 class='alertHead'></h3><p class='alertBody'></p>.\
+	  </div>\
+	", 
+	function()
+	{
+		$(".systemModalAlert").hide();
+		$(".statusIndicator").on("click",
+		function()
+		{	
+			vstatus = $(this).val();
+		});
+		$(".hideBtn").on("click",
+		function()
+		{
+			$(".systemModalAlert").hide();
+		});
+	});
+	
+	$("#systemModal .modal-footer").html("\
+		<button type='button' class='btn btn-primary editVideoBtn'>Update</button>\
+	",
+	function()
+	{
+		$(".editVideoBtn").on("click",function() {
+			cname = $("#videoName").val();
+			cdesc = $("#videoDesc").val();
+			//validation
+			if(vname == 0 || vdesc == 0)
+			{
+				$(".systemModalAlert .alertHead").text("Empty Field");
+				$(".systemModalAlert .alertBody").html("Both <em>Name</em> and <em>Description</em> of your video are required.");
+				$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
+			}
+			else if(vname.length > 20)
+			{
+				$(".systemModalAlert .alertHead").text("Invalid Name Length");
+				$(".systemModalAlert .alertBody").html("<em>Name</em> can be max. 20 characters in length.");
+				$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
+			}
+			else if(vdesc.length > 140)
+			{
+				$(".systemModalAlert .alertHead").text("Invalid Description Length");
+				$(".systemModalAlert .alertBody").html("<em>Description</em> can be max. 140 characters in length.");
+				$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
+			}
+			else if(!vname.match($alphaNumericPattern))
+			{
+				$(".systemModalAlert .alertHead").text("Invalid Input");
+				$(".systemModalAlert .alertBody").html("<em>Name</em> must be alphanumeric. No special characters or symbols allowed.");
+				$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
+			}
+			else
+			{
+				$(".editVideoBtn").attr('disabled','disabled');
+				$(".systemModalAlert .alertHead").html("Processing");
+				$(".systemModalAlert .alertBody").html("Please wait...");
+				$(".systemModalAlert").removeClass("alert-danger").addClass("alert-success").show();
+				$.post('gallery/editvideo.php',
+				{
+					vid:vid,
+					vname:vname,
+					vdesc:vdesc,
+					vstatus:vstatus					
+				},
+				function(data,status){
+					if(data == "exists")
+					{
+						$(".systemModalAlert .alertHead").text("Invalid Name");
+						$(".systemModalAlert .alertBody").html("A video with <em>Name</em>: <em>"+vname+"</em> already exists ! Try again with a different <em>Name</em>.");
+						$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
+						$(".editVideoBtn").removeAttr('disabled');
+					}
+					else if(data == "done")
+					{
+						$(".systemModalAlert .alertHead").html("Video Updated !");
+						$(".systemModalAlert .alertBody").html("Your video has been successfully updated. Now reloading...");
+						$(".systemModalAlert").removeClass("alert-danger").addClass("alert-success").show();
+						setTimeout(function(){window.location.reload("")},1000);
+					}
+					else
+					{
+						$(".systemModalAlert .alertHead").html("Unexpected Error");
+						$(".systemModalAlert .alertBody").html("An unexpected error has occurred which the Gallery Controller could not handle.\
+						Please retry or contact the administrator.");
+						$(".systemModalAlert").removeClass("alert-success").addClass("alert-danger").show();
+						$(".editCollectionBtn").removeAttr('disabled');
+					}
+				});
+			}
+		});
+	});
+	$("#systemModal").modal();
+});
+
+//delete collection
+$(".deleteVideo").on("click",function(e) {
+	e.preventDefault();
+	var vid = $(this).attr("data-vid");
+	$("#systemModal .modal-title").text("Delete Video");
+	$("#systemModal .modal-body").html("<p class='text-danger lead'>Are you sure ?</p><p class='text-danger'>Deleting \
+	this video will not only remove it from this collection but also permanently discard it !</p>");
+	
+	$("#systemModal .modal-footer").html("\
+		<button type='button' class='btn btn-default deleteDialogCloseBtn' data-dismiss='modal'>No</button>\
+		<button type='button' class='btn btn-danger deleteVideoBtn'>Yes</button>\
+	",
+	function()
+	{
+		$(".deleteVideoBtn").on("click",function(){
+			$(".deleteDialogCloseBtn").attr('disabled','disabled');
+			$(".deleteCollectionBtn").attr('disabled','disabled');
+			$.post('gallery/deletevideo.php',
+				{
+					vid:vid,					
+				},
+				function(data,status)
+				{
+					if(data == "done")
+					{
+						$("#systemModal .modal-body").html("<p class='text-success'>Your video has been deleted successfully. Standby for reload...</p>");
+						setTimeout(function(){window.location.reload()},1000);
+					}
+					else
+					{
+						$("#systemModal .modal-title").html("<h3 class='text-danger'>Unexpected Error</h3>");
+						$("#systemModal .modal-body").html("<p class='text-danger'>An unexpected error has occurred which the Gallery Controller could not handle.\
+						Please retry or contact the administrator.</p>");
+						$("#systemModal .modal-footer").html("<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>");
+					}
+				});
+		});	
+	});
+	
+	$("#systemModal").modal();
 });
 
 
