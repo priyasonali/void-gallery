@@ -26,6 +26,7 @@ Now,
 <input type="hidden" id="y" name="y" />
 <input type="hidden" id="w" name="w" />
 <input type="hidden" id="h" name="h" />
+<input type="hidden" id="cid" name="cid"/>
 <button type="button" class="btn btn-primary uploadSubmit">Crop Photo</button>
 to create its thumbnail.
 </form>
