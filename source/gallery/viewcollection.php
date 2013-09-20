@@ -2,10 +2,9 @@
 	<div class="page-header">
 <?php
 require 'dbconnect.php';
-if(!empty($_REQUEST['cid']) && !empty($_REQUEST['page']))
+if(!empty($_REQUEST['cid']))
 {
 	$cid = $_REQUEST['cid'];
-	$page = $_REQUEST['page'];
 }
 else
 {
@@ -34,8 +33,8 @@ $result = mysqli_query($con,"SELECT * FROM collection WHERE cid=$cid ");
 					}
 				$check=1;
 			}
-if($check==0 || !is_numeric($cid) || !is_numeric($page))	echo '<script>window.location.assign("?p=error1");</script>';
-echo '<h1>'.$cname.' in <a href="?p=initcollection&page='.$page.'">Collections</a> <a class="editCollection" title="Edit Collection" data-cid="'.$cid.'" data-cstatus="'.$cstatus.'" data-cname="'.$cname.'" data-cdesc="'.$cdesc.'" href="#"><span class="glyphicon glyphicon-edit"></span></a></h1>
+if($check==0 || !is_numeric($cid))	echo '<script>window.location.assign("?p=error1");</script>';
+echo '<h1>'.$cname.' in <a href="?p=initcollection">Collections</a> <a class="editCollection" title="Edit Collection" data-cid="'.$cid.'" data-cstatus="'.$cstatus.'" data-cname="'.$cname.'" data-cdesc="'.$cdesc.'" href="#"><span class="glyphicon glyphicon-edit"></span></a></h1>
 	</div>
 </section>
 

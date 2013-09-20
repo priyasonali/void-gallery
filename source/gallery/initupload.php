@@ -1,9 +1,32 @@
-<section class="container">
-	<div class="page-header">
-		<h1>Add photo to <span class="text-info">Photography</span></h1>
-	</div>
-</section>
+<?php
+		require 'dbconnect.php';
+		$chk=0;
+		
+		if(!empty($_REQUEST['cid']))
+		{
+			$cid = $_REQUEST['cid'];
+		}
+		else
+		{
+			echo '<script>window.location.assign("?p=error1");</script>';
+		}
+		
+		$result1 = mysqli_query($con,"SELECT * FROM collection WHERE cid=".$cid." ");
+		while($ro = mysqli_fetch_array($result1))
+			{			
+				$cname = $ro['cname'];
+				$chk=1;
+			}
+		if($cid<1 || !is_numeric($cid) || $chk == 0)	echo '<script>window.location.assign("?p=error1");</script>';
 
+echo '
+	<section class="container">
+		<div class="page-header">
+			<h1>Add photo to <a href="?p=viewcollection&cid='.$cid.'">'.$cname.'</a></h1>
+		</div>
+	</section>
+';
+?>
 <section class="container photoUpload">
 <div class="row lead">
 	<p>First, choose a photo* to upload.</p>
