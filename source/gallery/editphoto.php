@@ -41,7 +41,7 @@ else
 $result1=mysqli_query($con,"SELECT * FROM assign WHERE pid=".$pid."");
 while($row1=mysqli_fetch_array($result1))
 	{
-	$cid=$row1['cid']
+	$cid=$row1['cid'];
 	}
 $check= mysqli_query($con,"UPDATE photo SET pname='".$pname."', pdesc='".$pdesc."', pdate='".$date."', pstatus=".$pstatus." WHERE pid=".$pid."");
 $check1= mysqli_query($con,"UPDATE collection SET cdate='".$date."' WHERE cid=".$cid."");
