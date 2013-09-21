@@ -947,7 +947,7 @@ $(".deletePhoto").on("click",function(e) {
 					{
 						$("#systemModal .modal-title").html("<h3 class='text-danger'>Unexpected Error</h3>");
 						$("#systemModal .modal-body").html("<p class='text-danger'>An unexpected error has occurred which the Gallery Controller could not handle.\
-						Please retry or contact the administrator.</p><br><p class='text-info'>"+data+"</p>");
+						Please retry or contact the administrator.</p>");
 						$("#systemModal .modal-footer").html("<button type='button' class='btn btn-default' data-dismiss='modal'>Close</button>");
 					}
 				});

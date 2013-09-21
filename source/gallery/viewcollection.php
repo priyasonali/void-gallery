@@ -34,11 +34,28 @@ $result = mysqli_query($con,"SELECT * FROM collection WHERE cid=$cid ");
 				while($ro = mysqli_fetch_array($result1))
 					{
 					$pid = $ro['pid'];
-					$vid = $ro['vid']; 
-					if($pid!=0)
-					$passign=1;
-					if($vid!=0)
-					$vassign=1;
+					$vid = $ro['vid'];
+					
+					if ($session == 1)
+					{
+						if($pid!=0)
+						$passign=1;
+						if($vid!=0)
+						$vassign=1;
+					}
+					else
+					{
+						$result2 = mysqli_query($con,"SELECT * FROM photo WHERE pid=$pid AND pstatus=1");
+						while($ro1 = mysqli_fetch_array($result2))
+						{
+							$passign=1;
+						}
+						$result3 = mysqli_query($con,"SELECT * FROM video WHERE vid=$vid AND vstatus=1");
+						while($ro2 = mysqli_fetch_array($result3))
+						{
+							$vassign=1;
+						}
+					}
 					}
 				$check=1;
 			}
