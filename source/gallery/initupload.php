@@ -2,8 +2,6 @@
 if(!defined('socket')) {
 echo "<script>window.location.assign('../?p=error6');</script>";
 }
-?>
-<?php
 
 require 'dbconnect.php';
 $chk=0;

@@ -18,7 +18,8 @@ $chklist = array(
 					"initvideo",
 					"initupload",
 					"viewcollection",
-					"addvideo"
+					"addvideo",
+					"initadmin"
 				);
 				
 $msglist = array(
