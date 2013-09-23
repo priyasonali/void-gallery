@@ -52,7 +52,7 @@ __dark__ theme, just add `$theme = "dark"` to the first php tags at the top of y
 Authors
 -------
 
-[Santak Kumar Mishra](maito:admin@voidinformatics.com)
+[Santak Kumar Mishra](mailto:admin@voidinformatics.com)  
 [Sonali Priya](mailto:sonali@voidinformatics.com)
 
 Developed at: [Void Informatics](http://voidinformatics.com)
