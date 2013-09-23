@@ -48,3 +48,16 @@ The system currently supports 2 themes : __light__ and __dark__
 By default the __light__ theme is activated. If you want to view the _Collections, Photos, Videos_ listing pages in the
 __dark__ theme, just add `$theme = "dark"` to the first php tags at the top of your gallery page, i.e, instead of
 `<?php session_start(); ?>` in the top line, add `<?php session_start(); $theme="dark"; ?>`
+
+Authors
+-------
+
+[Santak Kumar Mishra](maito:admin@voidinformatics.com)
+[Sonali Priya](mailto:sonali@voidinformatics.com)
+
+Developed at: [Void Informatics](http://voidinformatics.com)
+
+Copyright and license
+---------------------
+
+Copyright 2013 [Void Informatics](http://voidinformatics.com), Inc under [The MIT License (MIT)](LICENSE).
