@@ -985,6 +985,29 @@ $(".collectionView .panel, .photoView .panel, .videoView .panel").on("mouseover"
 	$(this).removeClass("panel-primary").addClass("panel-default");
 });
 
+//gallery admin
+$(".adminLoginBtn").on("click",function(){
+	var pass = $("#inputPassword").val();
+	$.post('gallery/authenticate.php',
+			{
+				pass : pass
+			},
+			function(data,status){
+				window.location.reload();
+			});
+});
+
+$(".adminLogoutBtn").on("click",function(){
+	var pass = $("#inputPassword").val();
+	$.post('gallery/authenticate.php',
+			{
+				pass : "d00m"
+			},
+			function(data,status){
+				window.location.reload();
+			});
+});
+
 //=============
 });//End Script
 //=============

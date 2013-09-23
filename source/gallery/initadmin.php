@@ -7,14 +7,6 @@ if(isset($_SESSION['gallerySession']))
 if($_SESSION['gallerySession'] == "admin")
 $session = 1;
 }
-if($session != 1)
-{
-if(!empty($_POST['pass']))
-$passcode = $_POST['pass'];
-else $passcode = "";
-if($passcode == "abcd")
-$_SESSION['gallerySession'] == "admin";
-}
 ?>
 
 <section class="container">
@@ -28,23 +20,42 @@ $_SESSION['gallerySession'] == "admin";
 if($session != 1)
 {
 	echo '
-		<div class="row">
-			<div class="col-md-6">
-				<form role="form" action="?p=initadmin" method="post">
+		<div class="row  text-center">
+			<div class="col-md-4 col-md-offset-4">
+				<form role="form">
 					<div class="form-group">
-						<input type="password" class="form-control input-lg" id="password" name="password" placeholder="Enter Password">
+						<input type="password" class="form-control input-lg" id="inputPassword" placeholder="Enter Password"><br>
+						<button type="button" class="btn btn-primary btn-lg adminLoginBtn">Sign In</button>
+						<a href="?p=initcollection"><button type="button" class="btn btn-info btn-lg">Go to Gallery</button></a>
 					</div>
 				</form>
 			</div>
-			<div class="col-md-6">
-
-			</div>
-		</div>	
+		</div>
 	';
 }
+else
+{
+	echo '
+		<div class="row  text-center">
+			<div class="col-md-12">
+				<form role="form">
+					<div class="form-group">
+						<button type="button" class="btn btn-danger btn-lg adminLogoutBtn">Sign Out</button>
+						<a href="?p=initcollection"><button type="button" class="btn btn-info btn-lg">Go to Gallery</button></a>
+					</div>
+				</form>
+			</div>
+		</div>
+	
+	';
+	/*echo '
+		<hr>
+			<div class="row  text-center">
+			<div class="col-md-12">
+				<h3>Settings</h3>
+			</div>
+		</div>
+	';*/
+}
 ?>
-
-
-</div>
-<hr>
 </section>

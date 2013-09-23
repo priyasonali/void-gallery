@@ -1,1 +1,0 @@
-<?phpsession_start();if(!empty($_REQUEST['session']))$session = $_REQUEST['session'];else$session = "user";if($session == "admin")$_SESSION['gallerySession'] = $session;elsesession_destroy();header('Location: switchuser.php');?>
