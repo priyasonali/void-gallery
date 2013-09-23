@@ -34,7 +34,7 @@ Installation
     __Note:__ _Place the above code as a direct child of the `<body></body>` tags and not inside any other DOM element, wrapper or container inside the body._
     - Just before the closing `</body>` tag : `<?php require fingallery.php; ?>`.
 4. Edit "gallery/dbconnect.php" to add your specific database information.
-5. Edit "gallery/authenticate.php" to set your own password.
+5. Edit "gallery/authenticate.php" to set your own password. _Default: "void"_
 
 __Note__: _The page where you decide to add the gallery must have a_ __.php__ _extension and must be present at the same directory level as that of the "gallery" folder (preferably your webroot)_
 
