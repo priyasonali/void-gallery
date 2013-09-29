@@ -8,7 +8,7 @@ if(isset($_SESSION['gallerySession']))
 if($_SESSION['gallerySession'] == "admin")
 $session = 1;
 }
-require 'dbconnect.php';
+require 'gallery/dbconnect.php';
 
 echo '<section class="container">';
 	

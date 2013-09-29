@@ -3,7 +3,7 @@ if(!defined('socket')) {
 echo "<script>window.location.assign('../?p=error6');</script>";
 }
 
-require 'dbconnect.php';
+require 'gallery/dbconnect.php';
 $chk=0;
 
 if(!empty($_REQUEST['cid']))

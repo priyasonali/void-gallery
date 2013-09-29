@@ -10,7 +10,7 @@ $session = 1;
 }
 echo '<section class="container"><div class="page-header">';
 
-require 'dbconnect.php';
+require 'gallery/dbconnect.php';
 if(!empty($_REQUEST['cid']))
 {
 	$cid = $_REQUEST['cid'];
