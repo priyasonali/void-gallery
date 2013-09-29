@@ -38,7 +38,7 @@ Installation
 
 __Note__: _The page where you decide to add the gallery must have a_ __.php__ _extension and must be present at the same directory level as that of the "gallery" folder (preferably your webroot)_
 
-Now you can login to your gallery by following the url: `http://yourdomain.com/gallery/admin`
+Now you can login to your gallery by following the url: `http://yourdomain.com/your-gallery-page.php?p=initadmin`
 Your gallery will be available to visitors for viewing at `http://yourdomain.com/your-gallery-page.php`
 
 Theme
