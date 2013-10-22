@@ -1,5 +1,5 @@
 <?php
-if(!defined('socket')) {
+if(!defined('secureplug')) {
 echo "<script>window.location.assign('../?p=error6');</script>";
 }
 $session = 0;
