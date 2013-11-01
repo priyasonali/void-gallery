@@ -69,6 +69,7 @@ $('#itemUpload').fileupload({
 		add: function (e, data) {
             globalcid = $('#itemUpload').attr('data-cid');
 			
+			$('.inst-text').text("Please wait while your image is being uploaded...");
 			$('.lateHide').hide();
             data.submit();
         },

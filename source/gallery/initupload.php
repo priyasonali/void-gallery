@@ -33,7 +33,7 @@ echo '
 	<section class="container photoUpload">
 	<div class="row lead">
 		<div class="col-md-12">
-			<p>First, choose a photo* to upload.</p>
+			<p class="inst-text">First, choose a photo* to upload.</p>
 			<input class="lateHide" id="itemUpload" data-cid="'.$cid.'" type="file" name="item" data-url="gallery/uploadhandler.php">
 			<div class="uploadProgress">
 			  <div class="progress-bar" style="width: 0%;"></div>
