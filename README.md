@@ -53,7 +53,7 @@ __dark__ theme, just add `$theme = "dark"` to the first php tags at the top of y
 About _initgallery.php_ & _fingallery.php_
 -------------------------------------------
 
-For your information, __initgallery.php__ & __fingallery.php__ initialize the following stylesheet and script dependencies respectively. 
+For your information, __initgallery.php__ & __fingallery.php__ initialize the following stylesheet and script dependencies respectively.
 If you are using any of them in your website or web app, then you need not declare them again:-
 
 	<!--stylesheets-->
@@ -68,7 +68,7 @@ If you are using any of them in your website or web app, then you need not decla
 
 	<!--[3] jcrop-->
 	<link rel="stylesheet" href="gallery/js/jcrop/css/jquery.Jcrop.min.css" type="text/css" media="screen" />
-	
+
 	<!--scripts (placed at the end for faster page loading)-->
 
 	<!--[1] jquery-->
@@ -98,12 +98,5 @@ If you are using any of them in your website or web app, then you need not decla
 Authors
 -------
 
-[Santak Kumar Mishra](mailto:admin@voidinformatics.com)  
-[Sonali Priya](mailto:sonali@voidinformatics.com)
-
-Developed at: [Void Informatics](http://voidinformatics.com)
-
-Copyright and license
----------------------
-
-Copyright 2013 [Void Informatics](http://voidinformatics.com), Inc under [The MIT License (MIT)](LICENSE).
+[Santak Kumar Mishra](https://github.com/santakmishra)  
+[Sonali Priya](https://github.com/priyasonali)
